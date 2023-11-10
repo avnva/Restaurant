@@ -13,16 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Restaurant
+namespace Restaurant;
+
+public partial class LogInView : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public LogInView()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        LogInViewModel viewModel = new LogInViewModel();
+        DataContext = new LogInViewModel();
+
+        viewModel.CurrentKeyboardLayout = "Your Keyboard Layout";
+        viewModel.CapsLockPressed = "Caps Lock is Pressed";
     }
 }
