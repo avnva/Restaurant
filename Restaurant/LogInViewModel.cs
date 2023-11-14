@@ -1,39 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Restaurant;
 
 public class LogInViewModel : ViewModelBase
 {
-    private string _currentKeyboardLayout;
-    private string _capsLockPressed;
+    private string _login;
 
-    public string CurrentKeyboardLayout
+    private RelayCommand _logInCommand;
+    private string _password;
+    private readonly RestaurantDbContext dbContext;
+
+    public LogInViewModel()
     {
-        get { return _currentKeyboardLayout; }
-        set
-        {
-            if (_currentKeyboardLayout != value)
-            {
-                _currentKeyboardLayout = value;
-                OnPropertyChange(nameof(CurrentKeyboardLayout));
-            }
-        }
+
     }
 
-    public string CapsLockPressed
+    public bool AuthenticateUser(string username, string password)
     {
-        get { return _capsLockPressed; }
-        set
+        // Получаем пользователя из базы данных по логину
+        var user = dbContext.Users.FirstOrDefault(u => u.Login == username);
+
+        // Проверяем, существует ли пользователь и совпадает ли хэш пароля
+        if (user != null && CheckPasswordHash(password, user.PasswordHash))
         {
-            if (_capsLockPressed != value)
-            {
-                _capsLockPressed = value;
-                OnPropertyChange(nameof(CapsLockPressed));
-            }
+            // Успешная аутентификация
+            return true;
         }
+
+        // Неудачная аутентификация
+        return false;
     }
+    private bool CheckPasswordHash(string password, string storedHash)
+    {
+        // Реализуйте логику проверки хэша пароля (например, с использованием библиотеки для хэширования)
+        // Важно не хранить пароли в открытом виде в базе данных
+        // В реальном приложении следует использовать хэширование паролей и возможно, соль
+        // Вам может потребоваться сторонняя библиотека для хэширования паролей (например, BCrypt.Net)
+        // Пример:
+        // return BCrypt.Net.BCrypt.Verify(password, storedHash);
+        return password == storedHash; // Заглушка - замените на реальную логику
+    }
+
 }
