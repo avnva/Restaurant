@@ -18,7 +18,7 @@ public class LogInViewModel : ViewModelBase
 
     public LogInViewModel()
     {
-
+        dbContext = new RestaurantDbContext();
     }
 
     public bool AuthenticateUser(string username, string password)
@@ -43,8 +43,7 @@ public class LogInViewModel : ViewModelBase
         // В реальном приложении следует использовать хэширование паролей и возможно, соль
         // Вам может потребоваться сторонняя библиотека для хэширования паролей (например, BCrypt.Net)
         // Пример:
-        // return BCrypt.Net.BCrypt.Verify(password, storedHash);
-        return password == storedHash; // Заглушка - замените на реальную логику
+        return BCrypt.Net.BCrypt.Verify(password, storedHash);
     }
 
 }

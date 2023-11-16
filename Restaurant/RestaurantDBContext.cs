@@ -36,7 +36,7 @@ public class RestaurantDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Здесь укажите строку подключения к вашей базе данных PostgreSQL
-        optionsBuilder.UseNpgsql("Host = localhost; Port = 5432; Database = RestaurantDB; Username = postgres; Password = letmein2");
+        optionsBuilder.UseNpgsql("Host = localhost; Port = 5432; Database = restaurantdb; Username = admin; Password = admin");
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 
