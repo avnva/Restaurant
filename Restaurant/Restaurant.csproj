@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="domain\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="view\LogInView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <XamlRuntime>Wpf</XamlRuntime>
