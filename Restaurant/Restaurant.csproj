@@ -13,4 +13,28 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="domain\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="view\LogInView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>Wpf</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="app\localization\RussianLocalization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="app\view\LogInView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="app\view\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+
 </Project>
