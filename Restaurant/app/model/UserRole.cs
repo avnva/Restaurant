@@ -8,6 +8,6 @@ namespace Restaurant;
 
 public class UserRole
 {
-    public int UserRoleID { get; set; } 
+    public int UserRoleId { get; set; } 
     public string UserRoleName { get; set; }
 }

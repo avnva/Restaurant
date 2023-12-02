@@ -8,8 +8,8 @@ namespace Restaurant;
 
 public class Menu
 {
-    public int DishInMenuID { get; set; }
-    public int DishID { get; set; }
-    public int StatusID { get; set; }
+    public int DishInMenuId { get; set; }
+    public int DishId { get; set; }
+    public int StatusId { get; set; }
     public string Comment { get; set; }
 }

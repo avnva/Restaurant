@@ -8,6 +8,6 @@ namespace Restaurant;
 
 public class RequestType
 {
-    public int RequestTypeID { get; set; }
+    public int RequestTypeId { get; set; }
     public string RequestTypesName { get; set; }
 }

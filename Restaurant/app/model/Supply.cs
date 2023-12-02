@@ -8,8 +8,8 @@ namespace Restaurant;
 
 public class Supply
 {
-    public int SupplyID { get; set; }
-    public int SupplierID { get; set; }
+    public int SupplyId { get; set; }
+    public int SupplierId { get; set; }
     public DateTime SupplyDate { get; set; }
     public decimal PurchasePrice { get; set; }
 }

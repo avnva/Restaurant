@@ -8,8 +8,8 @@ namespace Restaurant;
 
 public class Request
 {
-    public int RequestID { get; set; }
-    public int DepartmentID { get; set; }
-    public int RequestTypeID { get; set; }
+    public int RequestId { get; set; }
+    public int DepartmentId { get; set; }
+    public int RequestTypeId { get; set; }
     public DateTime RequestDate { get; set; }
 }

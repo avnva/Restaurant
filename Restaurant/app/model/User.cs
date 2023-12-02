@@ -8,7 +8,7 @@ namespace Restaurant;
 public class User
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int UserID { get; set; }
+    public int UserId { get; set; }
 
     [MinLength(5)]
     public string Login { get; set; }
@@ -16,7 +16,7 @@ public class User
     [MinLength(5)]
     public string PasswordHash { get; set; }
 
-    //public UserRoles UserRole { get; set; }
+    public UserRole UserRole { get; set; }
 
     //public List<AccessRight> AccessRights { get; set; }
 }

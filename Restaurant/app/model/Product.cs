@@ -8,8 +8,8 @@ namespace Restaurant;
 
 public class Product
 {
-    public int ProductID { get; set; }
+    public int ProductId { get; set; }
     public string ProductName { get; set; }
-    public int UnitsOfMeasureID { get; set; }
+    public int UnitsOfMeasureId { get; set; }
     public decimal PriceMarkup { get; set; }
 }

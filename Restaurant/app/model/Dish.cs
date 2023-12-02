@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Restaurant;
+﻿namespace Restaurant.app.model;
 
 public class Dish
 {
-    public int DishID { get; set; }
-    public int GroupID { get; set; }
+    public int DishId { get; set; }
+    public int GroupId { get; set; }
     public string DishName { get; set; }
     public decimal DishCost { get; set; }
     public float OutputWeight { get; set; }

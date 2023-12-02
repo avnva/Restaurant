@@ -8,6 +8,6 @@ namespace Restaurant;
 
 public class Status
 {
-    public int StatusID { get; set; }
+    public int StatusId { get; set; }
     public string StatusName { get; set; }
 }

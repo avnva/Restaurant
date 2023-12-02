@@ -8,6 +8,6 @@ namespace Restaurant;
 
 public class UnitOfMeasure
 {
-    public int UnitOfMeasureID { get; set; }
+    public int UnitOfMeasureId { get; set; }
     public string UnitOfMeasureName { get; set; }
 }

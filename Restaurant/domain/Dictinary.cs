@@ -1,6 +1,6 @@
 ﻿namespace Restaurant.domain;
 
-public class dictonary
+public class Dictinary
 {
     
 }
