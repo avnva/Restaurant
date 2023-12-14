@@ -19,18 +19,19 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        //string username = "admin";
-        //string password = "admin";
+        string username = "admin";
+        string password = "admin";
 
-        //// Хэширование пароля
+        // Хэширование пароля
         //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+        //Console.WriteLine(hashedPassword);
 
         //using (var connection = new NpgsqlConnection("Host = localhost; Port = 5432; Database = restaurantdb; Username = admin; Password = admin"))
         //{
         //    connection.Open();
 
         //    // SQL запрос для вставки пользователя в базу данных
-        //    string sql = "INSERT INTO Users (Username, PasswordHash) VALUES (@Username, @PasswordHash)";
+        //    string sql = "INSERT INTO 'Users' (Username, PasswordHash) VALUES (@Username, @PasswordHash);";
 
         //    using (var cmd = new NpgsqlCommand(sql, connection))
         //    {
@@ -43,6 +44,6 @@ public partial class App : Application
         //    }
         //}
 
-        //Console.WriteLine("Пользователь успешно добавлен!");
+        Console.WriteLine("Пользователь успешно добавлен!");
     }
 }

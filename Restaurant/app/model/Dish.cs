@@ -1,7 +1,10 @@
-﻿namespace Restaurant.app.model;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Restaurant.app.model;
 
 public class Dish
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int DishId { get; set; }
     public int GroupId { get; set; }
     public string DishName { get; set; }

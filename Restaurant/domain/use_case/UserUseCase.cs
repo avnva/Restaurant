@@ -15,16 +15,16 @@ public class UserUseCase
     public void Execute(User executor, User newUser)
     {
         // Проверка роли текущего пользователя
-        if (executor.UserRole.UserRoleName != "ADMIN")
-        {
-            throw new InvalidOperationException("Only administrators can add new users.");
-        }
+        //if (executor.UserRole.UserRoleName != "ADMIN")
+        //{
+        //    throw new InvalidOperationException("Only administrators can add new users.");
+        //}
 
         // Проверка роли нового пользователя
-        if (newUser.UserRole.UserRoleName == "ADMIN" && executor.UserRole.UserRoleName != "ADMIN")
-        {
-            throw new InvalidOperationException("Only administrators can add new administrators.");
-        }
+        //if (newUser.UserRole.UserRoleName == "ADMIN" && executor.UserRole.UserRoleName != "ADMIN")
+        //{
+        //    throw new InvalidOperationException("Only administrators can add new administrators.");
+        //}
 
         // Добавление пользователя
         _userRepository.AddUser(newUser);

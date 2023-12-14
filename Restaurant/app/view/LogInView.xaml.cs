@@ -51,8 +51,8 @@ public partial class LogInView : Window
 
     private void LogInButton_Click(object sender, RoutedEventArgs e)
     {
-        try
-        {
+        //try
+        //{
             Cursor = Cursors.Wait;
             if (String.IsNullOrEmpty(loginTextBox.Text))
             {
@@ -83,15 +83,15 @@ public partial class LogInView : Window
                 // Неудачная аутентификация - выполните необходимые действия
                 MessageBox.Show("Неверные учетные данные.");
             }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Ошибка при загрузке программы");
-        }
-        finally
-        {
-            Cursor = Cursors.Arrow;
-        }
+        //}
+        //catch (Exception ex)
+        //{
+        //    MessageBox.Show("Ошибка при загрузке программы");
+        //}
+        //finally
+        //{
+        //    Cursor = Cursors.Arrow;
+        //}
     }
 
 

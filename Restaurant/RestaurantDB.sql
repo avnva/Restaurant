@@ -132,8 +132,6 @@ CREATE TABLE "OrdersDishes" (
     "Quantity" INT
 );
 
-COMMENT ON COLUMN "posts"."body" IS 'Content of the post';
-
 ALTER TABLE "Users"ADD FOREIGN KEY ("RoleID") REFERENCES "Roles"("RoleID");
 
 ALTER TABLE "RolesRights" ADD FOREIGN KEY ("RoleID") REFERENCES "Roles"("RoleID");

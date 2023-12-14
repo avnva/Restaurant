@@ -39,7 +39,7 @@ public class UserRepository
         existingUser.UserId = updatedUser.UserId;
         existingUser.Login = updatedUser.Login;
         existingUser.PasswordHash = updatedUser.PasswordHash;
-        existingUser.UserRole = updatedUser.UserRole;
+        //existingUser.UserRole = updatedUser.UserRole;
 
         _context.SaveChanges();
     }
