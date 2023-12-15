@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Restaurant.app.view;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,8 +52,8 @@ public partial class LogInView : Window
 
     private void LogInButton_Click(object sender, RoutedEventArgs e)
     {
-        //try
-        //{
+        try
+        {
             Cursor = Cursors.Wait;
             if (String.IsNullOrEmpty(loginTextBox.Text))
             {
@@ -75,23 +76,24 @@ public partial class LogInView : Window
                 //var mainWindow = new MainWindow(_dbContext, user);
                 Cursor = Cursors.Arrow;
                 //mainWindow.Show();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
                 Close();
-                MessageBox.Show("Успешный вход!");
             }
             else
             {
                 // Неудачная аутентификация - выполните необходимые действия
                 MessageBox.Show("Неверные учетные данные.");
             }
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show("Ошибка при загрузке программы");
-        //}
-        //finally
-        //{
-        //    Cursor = Cursors.Arrow;
-        //}
+    }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Ошибка при загрузке программы");
+        }
+        finally
+        {
+            Cursor = Cursors.Arrow;
+        }
     }
 
 

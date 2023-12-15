@@ -19,8 +19,8 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        string username = "admin";
-        string password = "admin";
+        //string username = "admin";
+        //string password = "admin";
 
         // Хэширование пароля
         //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
@@ -44,6 +44,6 @@ public partial class App : Application
         //    }
         //}
 
-        Console.WriteLine("Пользователь успешно добавлен!");
+        //Console.WriteLine("Пользователь успешно добавлен!");
     }
 }
