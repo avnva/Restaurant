@@ -1,5 +1,4 @@
-﻿using Restaurant.app.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,19 +16,13 @@ using System.Windows.Shapes;
 namespace Restaurant.app.view
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Dishes.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DishesPage : Page
     {
-        public MainWindow()
+        public DishesPage()
         {
             InitializeComponent();
-        }
-
-        private void Dishes_Click(object sender, RoutedEventArgs e)
-        {
-            DishesPage dishesPage = new DishesPage();
-            mainFrame.NavigationService.Navigate(dishesPage);
         }
     }
 }

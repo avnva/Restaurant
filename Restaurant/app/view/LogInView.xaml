@@ -31,10 +31,10 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Ресторан Mamma Mia" Grid.Column="1" Grid.Row="0" FontSize="24" HorizontalAlignment="Center" Margin="0,23,0,11"/>
+            <TextBlock Text="Ресторан Mamma Mia" Grid.Column="1" Grid.Row="0" FontSize="24" HorizontalAlignment="Center" Margin="0,23,0,11" Foreground="White"/>
 
-            <Label Grid.Column="0" Grid.Row="1" Content="{StaticResource LoginLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="90,0,0,0"/>
-            <Label Grid.Column="0" Grid.Row="2" Content="{StaticResource PasswordLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="80,0,0,0"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="{StaticResource LoginLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="90,0,0,0" Background="Black" Foreground="White"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="{StaticResource PasswordLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="80,0,0,0" Foreground="White"/>
             <TextBox Name="loginTextBox" Grid.Column="1" Grid.Row="1" Width="200" VerticalAlignment="Center"/>
             <PasswordBox Name="passwordBox" Grid.Column="1" Grid.Row="2" Width="200" VerticalAlignment="Center"/>
 

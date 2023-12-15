@@ -1,0 +1,49 @@
+﻿<Page x:Class="Restaurant.app.view.EditDishInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant.app.view" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditDishInfoPage">
+        <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+        <Grid Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+                <TextBlock Margin="10 5 10 0" Text="Название:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Number}" FontSize="15" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                
+                <TextBlock Margin="10 5 10 0" Text="Категория: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                <ComboBox x:Name="eduDocumentTypesComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Выберите категорию продукта" IsEditable="True" ItemsSource="{Binding EduDocumentTypes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEduDocumentType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name"/>
+
+                <TextBlock Margin="10 5 10 0" Text="Статус: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                <ComboBox x:Name="eduInstitutionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название образовательной организации" IsEditable="True" ItemsSource="{Binding EduInstitutions, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEduInstitution, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name"/>
+
+                <TextBlock Margin="10 5 10 0" Text="Стоимость (руб.):" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Series}" FontSize="15" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                <TextBlock Margin="10 5 10 0" Text="Вес порции (гр.):" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Number}" FontSize="15" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
+                    <Button Margin="5" Content="Удалить" Command="{Binding DeleteEduDocumentCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                    <Button Margin="5" Content="Сохранить" Command="{Binding SaveEduDocumentCommand}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <TextBlock Margin="10 5 10 0" Text="Технология приготовления" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"/>
+                <TextBox Margin="10 5 10 0" Height="100" Text="{Binding SelectedEduDocument.Number}" FontSize="15" 
+                     Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"
+                     AcceptsReturn="True" TextWrapping="Wrap" MaxLines="6"/>
+
+                <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

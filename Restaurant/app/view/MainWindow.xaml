@@ -12,7 +12,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Foreground="#DD000000" Background="#FF676767">
+        <Menu Grid.Row="0">
             <MenuItem Header="Другое" Style="{StaticResource MenuItemStyle}">
                 <MenuItem Header="Настройки" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
@@ -33,7 +33,7 @@
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Блюда" Style="{StaticResource MenuItemStyle}">
+            <MenuItem Header="Блюда" Click="Dishes_Click" Style="{StaticResource MenuItemStyle}">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="Food"/>
                 </MenuItem.Icon>
