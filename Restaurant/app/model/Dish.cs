@@ -1,15 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Net.Sockets;
 
 namespace Restaurant.app.model;
 
 public class Dish
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int DishId { get; set; }
-    public int GroupId { get; set; }
+    public int DishID { get; set; }
+    public int GroupID { get; set; }
     public string DishName { get; set; }
     public decimal DishCost { get; set; }
-    public float OutputWeight { get; set; }
+    public double OutputWeight { get; set; }
     public string CookingTechnology { get; set; }
-    public byte[] Photo { get; set; }
+    public string? Photo { get; set; }
 }

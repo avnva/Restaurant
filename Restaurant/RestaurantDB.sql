@@ -73,7 +73,7 @@ CREATE TABLE "Dishes" (
     "DishCost" DECIMAL(10,2),
     "OutputWeight" FLOAT,
     "CookingTechnology" TEXT,
-    "Photo" BYTEA
+    "Photo" VARCHAR(100)
 );
 
 CREATE TABLE "DishesProducts" (

@@ -15,11 +15,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding AddNewEmployeeCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding AddNewDishCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
             </Button>
 
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding OpenEmployeeInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding OpenDishInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Edit" Width="24" Height="24" />
             </Button>
 
@@ -29,12 +29,12 @@
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <DataGrid Name="dataGrid" SelectedItem="{Binding SelectedEmployee}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
+            <DataGrid Name="dataGrid" SelectedItem="{Binding SelectedDish}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Dishes}" AutoGenerateColumns="False" Foreground="#000000">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер" Binding="{Binding Passports[0].Surname}" />
-                    <DataGridTextColumn Header="Название" Binding="{Binding Passports[0].Name}" />
-                    <DataGridTextColumn Header="Статус" Binding="{Binding Passports[0].MiddleName}" />
-                    <DataGridTextColumn Header="Комментарий" Binding="{Binding PhoneNumber}" />
+                    <DataGridTextColumn Header="Номер" Binding="{Binding DishID}" />
+                    <DataGridTextColumn Header="Название" Binding="{Binding DishName}" />
+                    <DataGridTextColumn Header="Цена" Binding="{Binding DishCost}" />
+                    <DataGridTextColumn Header="Комментарий" Binding="{Binding CookingTechnology}" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

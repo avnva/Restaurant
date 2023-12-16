@@ -25,7 +25,7 @@ public class ViewModelBase : INotifyPropertyChanged
                 button, icon, defaultResult, options));
     }
 
-    protected void OnPropertyChange(string propertyName = null)
+    protected void OnPropertyChanged(string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

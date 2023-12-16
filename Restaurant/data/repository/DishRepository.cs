@@ -38,7 +38,7 @@ public class DishRepository
 
         if (existingDish != null)
         {
-            existingDish.GroupId = updatedDish.GroupId;
+            existingDish.GroupID = updatedDish.GroupID;
             existingDish.DishName = updatedDish.DishName;
             existingDish.DishCost = updatedDish.DishCost;
             existingDish.OutputWeight = updatedDish.OutputWeight;

@@ -23,6 +23,8 @@ namespace Restaurant.app.view
         public DishesPage()
         {
             InitializeComponent();
+
+            DataContext = new DishesPageViewModel();
         }
     }
 }
