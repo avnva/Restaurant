@@ -38,7 +38,7 @@ public class ProductRepository
         if (existingProduct != null)
         {
             existingProduct.ProductName = updatedProduct.ProductName;
-            existingProduct.UnitsOfMeasureId = updatedProduct.UnitsOfMeasureId;
+            existingProduct.UnitsOfMeasureID = updatedProduct.UnitsOfMeasureID;
             existingProduct.PriceMarkup = updatedProduct.PriceMarkup;
 
             _context.SaveChanges();

@@ -12,8 +12,11 @@ public class Supply
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public int SupplyId { get; set; }
-    public int SupplierId { get; set; }
+    public int SupplyID { get; set; }
+    public int SupplierID { get; set; }
     public DateTime SupplyDate { get; set; }
     public decimal PurchasePrice { get; set; }
+
+    [ForeignKey("SupplierID")]
+    public Supplier Supplier { get; set; }
 }

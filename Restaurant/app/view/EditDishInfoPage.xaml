@@ -8,27 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditDishInfoPage">
         <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
-        <Grid Background="WhiteSmoke">
+        <Grid Background="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Vertical" Grid.Column="0">
-                <TextBlock Margin="10 5 10 0" Text="Название:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Number}" FontSize="15" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
-                
-                <TextBlock Margin="10 5 10 0" Text="Категория: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Название:" Foreground="White"/>
+                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Number}" FontSize="15"  VerticalAlignment="Center"/>
+
+                <TextBlock Margin="10 5 10 0" Text="Категория: " Foreground="White" VerticalAlignment="Center"/>
                 <ComboBox x:Name="eduDocumentTypesComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Выберите категорию продукта" IsEditable="True" ItemsSource="{Binding EduDocumentTypes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEduDocumentType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name"/>
 
-                <TextBlock Margin="10 5 10 0" Text="Статус: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Статус: " Foreground="White" VerticalAlignment="Center"/>
                 <ComboBox x:Name="eduInstitutionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название образовательной организации" IsEditable="True" ItemsSource="{Binding EduInstitutions, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEduInstitution, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name"/>
 
-                <TextBlock Margin="10 5 10 0" Text="Стоимость (руб.):" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Series}" FontSize="15" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Стоимость (руб.):" Foreground="White"/>
+                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Series}" FontSize="15"  VerticalAlignment="Center"/>
 
-                <TextBlock Margin="10 5 10 0" Text="Вес порции (гр.):" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Number}" FontSize="15" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Вес порции (гр.):" Foreground="White"/>
+                <TextBox Margin="10 5 10 0" Text="{Binding SelectedEduDocument.Number}" FontSize="15"  VerticalAlignment="Center"/>
 
                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
                     <Button Margin="5" Content="Удалить" Command="{Binding DeleteEduDocumentCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
@@ -37,12 +37,12 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="1">
-                <TextBlock Margin="10 5 10 0" Text="Технология приготовления" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Технология приготовления" Foreground="White" TextAlignment="Center"/>
                 <TextBox Margin="10 5 10 0" Height="100" Text="{Binding SelectedEduDocument.Number}" FontSize="15" 
-                     Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"
+                     VerticalAlignment="Center"
                      AcceptsReturn="True" TextWrapping="Wrap" MaxLines="6"/>
 
-                <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Foreground="White" TextAlignment="Center"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

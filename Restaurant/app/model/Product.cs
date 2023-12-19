@@ -12,8 +12,8 @@ public class Product
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public int ProductId { get; set; }
+    public int ProductID { get; set; }
     public string ProductName { get; set; }
-    public int UnitsOfMeasureId { get; set; }
+    public int UnitsOfMeasureID { get; set; }
     public decimal PriceMarkup { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Restaurant.repository;
@@ -22,7 +23,9 @@ public class SupplyRepository
     // READ
     public List<Supply> GetSupplies()
     {
-        return _context.Supplies.ToList();
+        return _context.Supplies
+                .Include(w => w.Supplier)
+                .ToList();
     }
 
     public Supply GetSupplyById(int supplyId)
@@ -37,7 +40,7 @@ public class SupplyRepository
 
         if (existingSupply != null)
         {
-            existingSupply.SupplierId = updatedSupply.SupplierId;
+            existingSupply.SupplierID = updatedSupply.SupplierID;
             existingSupply.SupplyDate = updatedSupply.SupplyDate;
             existingSupply.PurchasePrice = updatedSupply.PurchasePrice;
 

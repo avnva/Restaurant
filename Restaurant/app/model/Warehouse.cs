@@ -12,8 +12,13 @@ public class Warehouse
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public int WarehouseId { get; set; }
-    public int ProductId { get; set; }
-    public float StockBalance { get; set; }
-    public int SupplierId { get; set; }
+    public int WarehouseID { get; set; }
+    public int ProductID { get; set; }
+    public double StockBalance { get; set; }
+    public int SupplierID { get; set; }
+
+    [ForeignKey("ProductID")]
+    public Product Product { get; set; }
+    [ForeignKey("SupplierID")]
+    public Supplier Supplier { get; set; }
 }

@@ -31,5 +31,15 @@ namespace Restaurant.app.view
             DishesPage dishesPage = new DishesPage();
             mainFrame.NavigationService.Navigate(dishesPage);
         }
+        private void Warehouses_Click(object sender, RoutedEventArgs e)
+        {
+            WarehousesPage warehousesPage = new WarehousesPage();
+            mainFrame.NavigationService.Navigate(warehousesPage);
+        }
+        private void Supplies_Click(object sender, RoutedEventArgs e)
+        {
+            SuppliesPage suppliesPage = new SuppliesPage();
+            mainFrame.NavigationService.Navigate(suppliesPage);
+        }
     }
 }

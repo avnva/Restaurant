@@ -47,7 +47,7 @@ namespace Restaurant
             repository = new DishRepository(new RestaurantDbContext());
 
             ReloadCommand = new RelayCommand(LoadDishes);
-            AddNewDishCommand = new RelayCommand(AddNewEmployee);
+            AddNewDishCommand = new RelayCommand(AddNewDish);
             OpenDishInfoCommand = new RelayCommand(OpenDishInfo, CanOpenDishInfo);
 
             LoadDishes();
@@ -69,7 +69,7 @@ namespace Restaurant
             Dishes = new ObservableCollection<Dish>(loadedDishes);
         }
 
-        private void AddNewEmployee(object obj)
+        private void AddNewDish(object obj)
         {
             OnNewDishAdded(new Dish());
         }

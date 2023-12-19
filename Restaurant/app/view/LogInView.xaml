@@ -38,9 +38,18 @@
             <TextBox Name="loginTextBox" Grid.Column="1" Grid.Row="1" Width="200" VerticalAlignment="Center"/>
             <PasswordBox Name="passwordBox" Grid.Column="1" Grid.Row="2" Width="200" VerticalAlignment="Center"/>
 
-            <Button Name="logInButton" Content="{StaticResource LoginButton}" Click="LogInButton_Click" FontSize="10" Grid.Column="1" Grid.Row="3" Width="156" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Name="languageText" FontSize="10" HorizontalAlignment="Left" Width="243" Grid.ColumnSpan="2" Margin="10,46,0,0"/>
-            <TextBlock Grid.Column="1" Grid.Row="4" Name="capsLockPressed" FontSize="10" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="127,46,10,0" />
+            <Button Name="logInButton" Content="{StaticResource LoginButton}" Click="LogInButton_Click" Grid.Column="1" Grid.Row="3" Width="156" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Foreground="White" Grid.Row="4" Name="languageText" FontSize="10" HorizontalAlignment="Left" Width="243" Grid.ColumnSpan="2" Margin="10,36,0,10"/>
+            <TextBlock Grid.Column="1" Foreground="White" Grid.Row="4" Name="capsLockPressed" FontSize="10" HorizontalAlignment="Right" Margin="0,36,10,10" RenderTransformOrigin="0.5,0.5" Width="132" Grid.ColumnSpan="2" >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
 
         </Grid>
     </Grid>

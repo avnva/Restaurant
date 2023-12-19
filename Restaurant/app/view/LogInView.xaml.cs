@@ -25,13 +25,6 @@ public partial class LogInView : Window
     {
         InitializeComponent();
 
-        
-        Closing += OnClose;
-        DataContext = new LogInViewModel();
-        (DataContext as ViewModelBase).Close += () => { Close(); };
-        (DataContext as ViewModelBase).MessageBoxRequest +=
-            ViewMessageBoxRequest;
-
         EventManager.RegisterClassHandler(typeof(Window), KeyDownEvent, new KeyEventHandler(MainKeyDown));
 
         languageText.Text = "Язык раскладки: " + Language.GetEquivalentCulture().DisplayName;
@@ -48,6 +41,12 @@ public partial class LogInView : Window
                {
                    languageText.Text = "Язык раскладки: " + e.NewLanguage.DisplayName;
                });
+
+        Closing += OnClose;
+        DataContext = new LogInViewModel();
+        (DataContext as ViewModelBase).Close += () => { Close(); };
+        (DataContext as ViewModelBase).MessageBoxRequest +=
+            ViewMessageBoxRequest;
     }
 
     private void LogInButton_Click(object sender, RoutedEventArgs e)

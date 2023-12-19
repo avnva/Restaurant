@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Restaurant.repository;
@@ -22,7 +23,10 @@ public class WarehouseRepository
     // READ
     public List<Warehouse> GetWarehouses()
     {
-        return _context.Warehouses.ToList();
+        return _context.Warehouses
+    .Include(w => w.Product)  // Загрузка связанной сущности Product
+    .Include(w => w.Supplier) // Загрузка связанной сущности Supplier
+    .ToList();
     }
 
     public Warehouse GetWarehouseById(int warehouseId)
@@ -37,9 +41,9 @@ public class WarehouseRepository
 
         if (existingWarehouse != null)
         {
-            existingWarehouse.ProductId = updatedWarehouse.ProductId;
+            existingWarehouse.ProductID = updatedWarehouse.ProductID;
             existingWarehouse.StockBalance = updatedWarehouse.StockBalance;
-            existingWarehouse.SupplierId = updatedWarehouse.SupplierId;
+            existingWarehouse.SupplierID = updatedWarehouse.SupplierID;
 
             _context.SaveChanges();
         }
