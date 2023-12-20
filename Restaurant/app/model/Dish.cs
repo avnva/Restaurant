@@ -25,6 +25,10 @@ public class Dish
     public double OutputWeight { get; set; }
     public string CookingTechnology { get; set; }
     public string? Photo { get; set; }
+
+    [NotMapped]
     public DishGroup DishGroup { get; set; }
+
+    [NotMapped]
     public Status Status { get; set; }
 }
