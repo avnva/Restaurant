@@ -17,15 +17,22 @@ namespace Restaurant
         private StatusRepository statusRepository;
         private DishGroupRepository dishGroupRepository;
         private MenuRepository menuRepository;
+        private ProductRepository productRepository;
 
         private Status selectedStatus;
         private DishGroup selectedDishGroup;
+        private Product selectedProduct;
 
         public Dish Dish { get; set; }
         public Menu menu { get; set; }
 
         public ObservableCollection<Status> Statuses { get; set; }
         public ObservableCollection<DishGroup> DishGroups { get; set; }
+        public ObservableCollection<Product> Products { get; set; }
+        public ObservableCollection<Product> Ingredients { get; set; }
+        public ObservableCollection<DishesProducts> DishesProducts { get; set; }
+
+        public RelayCommand SaveCommand { get; set; }
 
         public Status SelectedStatus
         {
@@ -50,6 +57,16 @@ namespace Restaurant
             }
         }
 
+        public Product SelectedProduct
+        {
+            get => selectedProduct;
+            set
+            {
+                selectedProduct = value;
+                OnPropertyChanged(nameof(SelectedProduct));
+            }
+        }
+
         public EditDishViewModel(Dish dish)
         {
             db = new RestaurantDbContext();
@@ -59,15 +76,25 @@ namespace Restaurant
             statusRepository = new StatusRepository(db);
             dishGroupRepository = new DishGroupRepository(db);
             menuRepository = new MenuRepository(db);
+            productRepository = new ProductRepository(db);
 
             Statuses = new ObservableCollection<Status>(statusRepository.GetStatuses());
             DishGroups = new ObservableCollection<DishGroup>(dishGroupRepository.GetDishGroups());
+            Products = new ObservableCollection<Product>(productRepository.GetProducts());
 
             Dish.DishGroup = DishGroups.FirstOrDefault(i => i.GroupId == Dish.GroupID);
             SelectedDishGroup = Dish.DishGroup;
-
-            menu = menuRepository.GetMenu().FirstOrDefault(i => i.DishId == Dish.DishID);
+            if (dish.DishID != null)
+            {
+                menu = menuRepository.GetMenu().FirstOrDefault(i => i.DishId == Dish.DishID);
+            }
+            else
+            {
+                menu = new Menu();
+                menu.StatusId = 1;
+            }
             SelectedStatus = Statuses.FirstOrDefault(i => i.StatusId == menu.StatusId);
+            DishesProducts = new ObservableCollection<DishGroup>()
         }
     }
 }

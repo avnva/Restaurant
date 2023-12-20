@@ -3,11 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:Restaurant" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditDishInfoPage">
-        <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
         <Grid Background="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
@@ -43,6 +44,32 @@
                      AcceptsReturn="True" TextWrapping="Wrap" MaxLines="6"/>
 
                 <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Foreground="White" TextAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Grid.Row="0" Command="{Binding AddPassportCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Left">
+                        <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+                    </Button>
+                    <ComboBox Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Поиск" IsEditable="True" ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="ProductName" Width="198"/>
+                    <xctk:IntegerUpDown Name="myUpDownControl" />
+                </StackPanel>
+               
+                <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+                    <ListBox Grid.Row="0" ItemsSource="{Binding Ingredients}" SelectedItem="{Binding SelectedProduct}" Height="230">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5" Orientation="Horizontal">
+                                    <StackPanel Margin="5 0">
+                                        <TextBlock FontSize="15" Text="Название" FontWeight="Bold"/>
+                                        <TextBlock FontSize="15" Text="{Binding Path=ProductName}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5 0">
+                                        <TextBlock FontSize="15" Text="Количество" FontWeight="Bold"/>
+                                        <TextBlock FontSize="15" Text="{Binding Path=Number}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
             </StackPanel>
         </Grid>
     </ScrollViewer>
