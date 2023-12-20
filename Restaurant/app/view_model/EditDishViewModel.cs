@@ -16,11 +16,14 @@ namespace Restaurant
 
         private StatusRepository statusRepository;
         private DishGroupRepository dishGroupRepository;
+        private MenuRepository menuRepository;
 
         private Status selectedStatus;
         private DishGroup selectedDishGroup;
 
         public Dish Dish { get; set; }
+        public Menu menu { get; set; }
+
         public ObservableCollection<Status> Statuses { get; set; }
         public ObservableCollection<DishGroup> DishGroups { get; set; }
 
@@ -30,6 +33,7 @@ namespace Restaurant
             set
             {
                 selectedStatus = value;
+                menu.StatusId = value.StatusId;
                 OnPropertyChanged(nameof(SelectedStatus));
             }
         }
@@ -50,15 +54,20 @@ namespace Restaurant
         {
             db = new RestaurantDbContext();
             Dish = dish;
+            menu = new Menu();
 
             statusRepository = new StatusRepository(db);
             dishGroupRepository = new DishGroupRepository(db);
+            menuRepository = new MenuRepository(db);
 
             Statuses = new ObservableCollection<Status>(statusRepository.GetStatuses());
             DishGroups = new ObservableCollection<DishGroup>(dishGroupRepository.GetDishGroups());
 
             Dish.DishGroup = DishGroups.FirstOrDefault(i => i.GroupId == Dish.GroupID);
             SelectedDishGroup = Dish.DishGroup;
+
+            menu = menuRepository.GetMenu().FirstOrDefault(i => i.DishId == Dish.DishID);
+            SelectedStatus = Statuses.FirstOrDefault(i => i.StatusId == menu.StatusId);
         }
     }
 }

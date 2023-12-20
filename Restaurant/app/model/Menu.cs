@@ -10,10 +10,18 @@ namespace Restaurant;
 
 public class Menu
 {
+    public Menu()
+    {
+        DishInMenuId = null;
+    }
+
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public int DishInMenuId { get; set; }
+    [Column("DishInMenuID")]
+    public int? DishInMenuId { get; set; }
+    [Column("DishID")]
     public int DishId { get; set; }
+    [Column("StatusID")]
     public int StatusId { get; set; }
     public string Comment { get; set; }
 }
