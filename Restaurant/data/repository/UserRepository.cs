@@ -36,7 +36,7 @@ public class UserRepository
 
         if (existingUser == null) return;
         
-        existingUser.UserId = updatedUser.UserId;
+        existingUser.UserID = updatedUser.UserID;
         existingUser.Login = updatedUser.Login;
         existingUser.PasswordHash = updatedUser.PasswordHash;
         //existingUser.UserRole = updatedUser.UserRole;

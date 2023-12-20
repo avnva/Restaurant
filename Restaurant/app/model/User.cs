@@ -10,7 +10,7 @@ public class User
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
     [Column("UserID")]
-    public int UserId { get; set; }
+    public int UserID { get; set; }
 
     [MinLength(5)]
     [Column("Username")]

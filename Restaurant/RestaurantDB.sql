@@ -54,6 +54,12 @@ CREATE TABLE "Departments" (
     "ActionsDescription" TEXT
 );
 
+CREATE TABLE "DepartmentsProducts" (
+    "DepartmentID" INT,
+    "ProductID" INT,
+    "Quantity" FLOAT
+);
+
 CREATE TABLE "Menu" (
     "DishInMenuID" SERIAL PRIMARY KEY,
     "DishID" INT,
@@ -105,14 +111,9 @@ CREATE TABLE "SuppliesProducts" (
 CREATE TABLE "Requests" (
     "RequestID" SERIAL PRIMARY KEY,
     "DepartmentID" INT,
-    "RequestTypeID" INT,
     "RequestDate" TIMESTAMP
 );
 
-CREATE TABLE "RequestTypes" (
-    "RequestTypesID" SERIAL PRIMARY KEY,
-    "RequestTypesName" VARCHAR(20)
-);
 
 CREATE TABLE "RequestsProducts" (
     "RequestID" INT,
@@ -149,6 +150,10 @@ ALTER TABLE "Dishes" ADD FOREIGN KEY ("GroupID") REFERENCES "DishGroups" ("Group
 ALTER TABLE "DishesProducts" ADD FOREIGN KEY ("DishID") REFERENCES "Dishes" ("DishID");
 
 ALTER TABLE "DishesProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");
+
+ALTER TABLE "DepartmentsProducts" ADD FOREIGN KEY ("DepartmentID") REFERENCES "Departments" ("DepartmentID");
+
+ALTER TABLE "DepartmentsProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");
 
 ALTER TABLE "Warehouses" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");
 

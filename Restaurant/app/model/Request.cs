@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant.app.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,8 +13,9 @@ public class Request
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public int RequestId { get; set; }
-    public int DepartmentId { get; set; }
-    public int RequestTypeId { get; set; }
+    public int RequestID { get; set; }
+    public int DepartmentID { get; set; }
     public DateTime RequestDate { get; set; }
+    [ForeignKey("DepartmentID")]
+    public Department Department { get; set; }
 }

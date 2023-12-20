@@ -42,5 +42,15 @@ namespace Restaurant.app.view
             SuppliesPage suppliesPage = new SuppliesPage();
             mainFrame.NavigationService.Navigate(suppliesPage);
         }
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersPage ordersPage = new OrdersPage();
+            mainFrame.NavigationService.Navigate(ordersPage);
+        }
+        private void Requests_Click(object sender, RoutedEventArgs e)
+        {
+            RequestsPage requestsPage = new RequestsPage();
+            mainFrame.NavigationService.Navigate(requestsPage);
+        }
     }
 }

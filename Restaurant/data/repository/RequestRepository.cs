@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Restaurant.repository;
@@ -22,7 +23,9 @@ public class RequestRepository
     // READ
     public List<Request> GetRequests()
     {
-        return _context.Requests.ToList();
+        return _context.Requests
+    .Include(w => w.Department)  // Загрузка связанной сущности Product
+    .ToList();
     }
 
     public Request GetRequestById(int requestId)
@@ -37,8 +40,7 @@ public class RequestRepository
 
         if (existingRequest != null)
         {
-            existingRequest.DepartmentId = updatedRequest.DepartmentId;
-            existingRequest.RequestTypeId = updatedRequest.RequestTypeId;
+            existingRequest.DepartmentID = updatedRequest.DepartmentID;
             existingRequest.RequestDate = updatedRequest.RequestDate;
 
             _context.SaveChanges();

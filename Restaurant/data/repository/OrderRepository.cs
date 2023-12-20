@@ -23,7 +23,8 @@ public class OrderRepository
     // READ
     public List<Order> GetOrders()
     {
-        return _context.Orders.Include(o => o.OrderedDishes).ToList();
+        return _context.Orders.ToList();
+        //return _context.Orders.Include(o => o.OrderedDishes).ToList();
     }
 
     public Order GetOrderById(int orderId)
