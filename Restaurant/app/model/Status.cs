@@ -12,6 +12,7 @@ public class Status
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
+    [Column("StatusID")]
     public int StatusId { get; set; }
     public string StatusName { get; set; }
 }

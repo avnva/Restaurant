@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant.app.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,11 @@ namespace Restaurant.app.view
 
             DataContext = new DishesPageViewModel();
         }
+        private void AddNewEmployee(Dish dish)
+        {
+            EditDishInfoPage editEmployeeInfoPage = new EditDishInfoPage(dish);
+            NavigationService.Navigate(editEmployeeInfoPage);
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using Restaurant.app.model;
+﻿using Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,7 @@ namespace Restaurant.app.view
         public MainWindow()
         {
             InitializeComponent();
+            DataStore.Frame = mainFrame;
         }
 
         private void Dishes_Click(object sender, RoutedEventArgs e)

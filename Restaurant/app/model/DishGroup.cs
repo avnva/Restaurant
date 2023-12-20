@@ -12,6 +12,7 @@ public class DishGroup
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
+    [Column("GroupID")]
     public int GroupId { get; set; }
     public string GroupName { get; set; }
 }

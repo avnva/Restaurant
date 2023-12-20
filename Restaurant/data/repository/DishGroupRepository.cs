@@ -15,25 +15,25 @@ public class DishGroupRepository
     // CREATE
     public void AddDishGroup(DishGroup dishGroup)
     {
-        _context.DishesGroups.Add(dishGroup);
+        _context.DishGroups.Add(dishGroup);
         _context.SaveChanges();
     }
 
     // READ
     public List<DishGroup> GetDishGroups()
     {
-        return _context.DishesGroups.ToList();
+        return _context.DishGroups.ToList();
     }
 
     public DishGroup GetDishGroupById(int groupId)
     {
-        return _context.DishesGroups.Find(groupId);
+        return _context.DishGroups.Find(groupId);
     }
 
     // UPDATE
     public void UpdateDishGroup(DishGroup updatedDishGroup)
     {
-        var existingDishGroup = _context.DishesGroups.Find(updatedDishGroup);
+        var existingDishGroup = _context.DishGroups.Find(updatedDishGroup);
 
         if (existingDishGroup != null)
         {
@@ -46,11 +46,11 @@ public class DishGroupRepository
     // DELETE
     public void DeleteDishGroup(int groupId)
     {
-        var dishGroupToDelete = _context.DishesGroups.Find(groupId);
+        var dishGroupToDelete = _context.DishGroups.Find(groupId);
 
         if (dishGroupToDelete != null)
         {
-            _context.DishesGroups.Remove(dishGroupToDelete);
+            _context.DishGroups.Remove(dishGroupToDelete);
             _context.SaveChanges();
         }
     }

@@ -15,7 +15,7 @@ public class RestaurantDbContext : DbContext
     public DbSet<AccessRight> AccessRights { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<UnitOfMeasure> UnitsOfMeasure { get; set; }
-    public DbSet<DishGroup> DishesGroups { get; set; }
+    public DbSet<DishGroup> DishGroups { get; set; }
     public DbSet<Dish> Dishes { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<Menu> Menu { get; set; }

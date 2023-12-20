@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Restaurant.app.model;
+using Restaurant.app.view;
 using Restaurant.repository;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace Restaurant
 {
@@ -76,7 +78,8 @@ namespace Restaurant
 
         private void OnNewDishAdded(Dish dish)
         {
-            NewDishAdded?.Invoke(dish);
+            EditDishInfoPage editEmployeeInfoPage = new EditDishInfoPage(dish);
+            DataStore.Frame.NavigationService.Navigate(editEmployeeInfoPage);
         }
     }
 }
