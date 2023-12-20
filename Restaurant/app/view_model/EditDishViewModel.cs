@@ -40,8 +40,8 @@ namespace Restaurant
             set
             {
                 selectedDishGroup = value;
-                //Dish.DishGroup = value;
-                //Dish.GroupID = value.GroupId;
+                Dish.DishGroup = value;
+                Dish.GroupID = value.GroupId;
                 OnPropertyChanged(nameof(SelectedDishGroup));
             }
         }
@@ -57,8 +57,8 @@ namespace Restaurant
             Statuses = new ObservableCollection<Status>(statusRepository.GetStatuses());
             DishGroups = new ObservableCollection<DishGroup>(dishGroupRepository.GetDishGroups());
 
-            //Dish.DishGroup = DishGroups.FirstOrDefault(i => i.GroupId == Dish.GroupID);
-            //SelectedDishGroup = Dish.DishGroup;
+            Dish.DishGroup = DishGroups.FirstOrDefault(i => i.GroupId == Dish.GroupID);
+            SelectedDishGroup = Dish.DishGroup;
         }
     }
 }
