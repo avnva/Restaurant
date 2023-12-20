@@ -61,7 +61,8 @@ public class SuppliesPageViewModel : ViewModelBase
 
     private void OpenSupplyInfo(object obj)
     {
-        OnNewSupplyAdded(SelectedSupply);
+        OpenSupplyInfoPage(SelectedSupply);
+        //OnNewSupplyAdded(SelectedSupply);
     }
 
     private void LoadSupplies(object obj = null)
@@ -76,12 +77,13 @@ public class SuppliesPageViewModel : ViewModelBase
 
         Supplier productSupplier = new Supplier();
         newSupply.Supplier = productSupplier;
-        OnNewSupplyAdded(new Supply());
+        OpenSupplyInfoPage(new Supply());
+        //OnNewSupplyAdded(new Supply());
     }
-    private void OnNewSupplyAdded(Supply supply)
-    {
-        NewSupplyAdded?.Invoke(supply);
-    }
+    //private void OnNewSupplyAdded(Supply supply)
+    //{
+    //    NewSupplyAdded?.Invoke(supply);
+    //}
     private bool CanOpenSupplierInfo(object obj)
     {
         return SelectedSupply != null;
@@ -95,6 +97,13 @@ public class SuppliesPageViewModel : ViewModelBase
         SupplierInfo suplierInfoPage = new SupplierInfo(supply.Supplier);
 
         DataStore.Frame.NavigationService.Navigate(suplierInfoPage);
+    }
+
+    private void OpenSupplyInfoPage(Supply supply)
+    {
+        EditSupllyInfoPage editSupllyInfoPage = new EditSupllyInfoPage(supply);
+
+        DataStore.Frame.NavigationService.Navigate(editSupllyInfoPage);
     }
 
 }

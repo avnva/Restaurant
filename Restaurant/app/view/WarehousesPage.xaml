@@ -23,6 +23,7 @@
                     Command="{Binding OpenSupplierInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
 
             </Button>
+            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground ="White" Text="Склад" Width="117"/>
         </StackPanel>
 
         <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Auto">

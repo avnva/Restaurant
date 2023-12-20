@@ -44,27 +44,6 @@
                 </MenuItem>
             </MenuItem>
 
-            
-            
-            <MenuItem Header="Другое" Foreground="White" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="Настройки" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="Settings"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator Height="2"/>
-                <MenuItem Header="Сменить пароль" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="PasswordReset"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator Height="2"/>
-                <MenuItem Header="Выход" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="ExitToApp"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
             <MenuItem Foreground="White" Header="Помощь" Style="{StaticResource MenuItemStyle}">
                 <MenuItem Header="Содержание" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
@@ -77,6 +56,11 @@
                         <materialDesign:PackIcon Kind="InformationCircleOutline"/>
                     </MenuItem.Icon>
                 </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Выход" Style="{StaticResource MenuItemStyle}">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="ExitToApp"/>
+                </MenuItem.Icon>
             </MenuItem>
         </Menu>
 

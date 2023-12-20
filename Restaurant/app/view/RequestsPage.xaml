@@ -26,6 +26,7 @@
             <Button Width="32" Height="32" Margin="2 5" Command="{Binding ReloadCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Reload" Width="24" Height="24" />
             </Button>
+            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground ="White" Text="Заявки" Width="117"/>
         </StackPanel>
 
         <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Auto">
