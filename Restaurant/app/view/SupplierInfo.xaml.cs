@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Restaurant.app.model;
+using Restaurant.app.view_model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,10 @@ namespace Restaurant.app.view
     /// </summary>
     public partial class SupplierInfo : Page
     {
-        public SupplierInfo()
+        public SupplierInfo(Supplier supplier)
         {
             InitializeComponent();
+            DataContext = new SupplierInfoPageViewModel(supplier);
         }
     }
 }

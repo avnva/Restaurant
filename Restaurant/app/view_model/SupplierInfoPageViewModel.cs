@@ -1,4 +1,5 @@
-﻿using Restaurant.repository;
+﻿using Restaurant.app.view;
+using Restaurant.repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,21 +8,7 @@ namespace Restaurant.app.view_model;
 
 public class SupplierInfoPageViewModel : ViewModelBase
 {
-    private ObservableCollection<Supplier> suppliers;
-    private SupplierRepository repository;
     private Supplier selectedSupplier;
-
-    public event Action<Supplier> NewSupplierAdded;
-
-    public ObservableCollection<Supplier> Suppliers
-    {
-        get { return suppliers; }
-        set
-        {
-            suppliers = value;
-            OnPropertyChanged(nameof(Suppliers));
-        }
-    }
 
     public Supplier SelectedSupplier
     {
@@ -48,43 +35,9 @@ public class SupplierInfoPageViewModel : ViewModelBase
     public string SelectedSupplierBankAccount => SelectedSupplier?.BankAccount;
     public string SelectedSupplierINN => SelectedSupplier?.INN;
 
-    public RelayCommand AddNewSupplierCommand { get; private set; }
-    public RelayCommand OpenSupplierInfoCommand { get; private set; }
-    public RelayCommand ReloadCommand { get; private set; }
-
-    public SupplierInfoPageViewModel()
+    public SupplierInfoPageViewModel(Supplier supplier)
     {
-        repository = new SupplierRepository(new RestaurantDbContext());
-
-        ReloadCommand = new RelayCommand(LoadSuppliers);
-        AddNewSupplierCommand = new RelayCommand(AddNewSupplier);
-        OpenSupplierInfoCommand = new RelayCommand(OpenSupplierInfo, CanOpenSupplierInfo);
-
-        LoadSuppliers();
+        selectedSupplier = supplier;
     }
 
-    private bool CanOpenSupplierInfo(object obj)
-    {
-        return SelectedSupplier != null;
-    }
-
-    private void OpenSupplierInfo(object obj)
-    {
-        OnNewSupplierAdded(SelectedSupplier);
-    }
-
-    private void LoadSuppliers(object obj = null)
-    {
-        List<Supplier> loadedSuppliers = repository.GetSuppliers();
-        Suppliers = new ObservableCollection<Supplier>(loadedSuppliers);
-    }
-
-    private void AddNewSupplier(object obj)
-    {
-        OnNewSupplierAdded(new Supplier());
-    }
-    private void OnNewSupplierAdded(Supplier supplier)
-    {
-        NewSupplierAdded?.Invoke(supplier);
-    }
 }

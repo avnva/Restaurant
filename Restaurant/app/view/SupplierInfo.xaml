@@ -8,9 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SupplierInfo">
-    <Page.DataContext>
-        <vm:SupplierInfoPageViewModel/>
-    </Page.DataContext>
+
     
     <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
         <Grid Background="Black">
@@ -34,8 +32,8 @@
 
 
                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-                    <Button Content="Удалить" Command="{Binding DeleteEduDocumentCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
-                    <Button Content="Сохранить" Command="{Binding SaveEduDocumentCommand}"/>
+                    <!--<Button Content="Удалить" Command="{Binding }" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                    <Button Content="Сохранить" Command="{Binding }"/>-->
                 </StackPanel>
             </StackPanel>
 

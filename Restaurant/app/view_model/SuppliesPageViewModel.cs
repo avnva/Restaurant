@@ -1,4 +1,5 @@
-﻿using Restaurant.repository;
+﻿using Restaurant.app.view;
+using Restaurant.repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -79,4 +80,5 @@ public class SuppliesPageViewModel : ViewModelBase
     {
         NewSupplyAdded?.Invoke(supply);
     }
+
 }

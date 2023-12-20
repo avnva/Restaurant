@@ -1,4 +1,5 @@
 ﻿using Restaurant.app.model;
+using Restaurant.app.view;
 using Restaurant.repository;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ public class WarehousesPageViewModel : ViewModelBase
     private ObservableCollection<Warehouse> warehouses;
     private WarehouseRepository repository;
     private Warehouse selectedWarehouse;
+    private Supplier selectedSupplier;
 
     public event Action<Warehouse> NewWarehouseAdded;
 
@@ -36,10 +38,20 @@ public class WarehousesPageViewModel : ViewModelBase
             OnPropertyChanged(nameof(SelectedWarehouse));
         }
     }
+    public Supplier SelectedSupplier
+    {
+        get { return selectedSupplier; }
+        set
+        {
+            selectedSupplier = value;
+            OnPropertyChanged(nameof(SelectedSupplier));
+        }
+    }
 
     public RelayCommand AddNewWarehouseCommand { get; private set; }
     public RelayCommand OpenWarehouseInfoCommand { get; private set; }
     public RelayCommand ReloadCommand { get; private set; }
+    public RelayCommand OpenSupplierInfoCommand { get; private set; }
 
     public WarehousesPageViewModel()
     {
@@ -48,6 +60,7 @@ public class WarehousesPageViewModel : ViewModelBase
         ReloadCommand = new RelayCommand(LoadWarehouses);
         AddNewWarehouseCommand = new RelayCommand(AddNewWarehouse);
         OpenWarehouseInfoCommand = new RelayCommand(OpenWarehouseInfo, CanOpenWarehouseInfo);
+        OpenSupplierInfoCommand = new RelayCommand(OpenSupplierInfo, CanOpenSupplierInfo);
 
         LoadWarehouses();
     }
@@ -83,5 +96,19 @@ public class WarehousesPageViewModel : ViewModelBase
     private void OnNewWarehouseAdded(Warehouse warehouse)
     {
         NewWarehouseAdded?.Invoke(warehouse);
+    }
+    private bool CanOpenSupplierInfo(object obj)
+    {
+        return SelectedSupplier != null;
+    }
+
+    private void OpenSupplierInfo(object obj)
+    {
+        OnNewSupplyAdded(SelectedSupplier);
+    }
+    private void OnNewSupplyAdded(Supplier supplier)
+    {
+        SupplierInfo suuplyInfoPage = new SupplierInfo(supplier);
+        DataStore.Frame.NavigationService.Navigate(suuplyInfoPage);
     }
 }
