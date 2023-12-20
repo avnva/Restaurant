@@ -19,7 +19,9 @@
                 <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
             </Button>
 
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding OpenDishInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5" 
+                    Command="{Binding OpenDishInfoCommand, UpdateSourceTrigger=PropertyChanged}" 
+                    Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Edit" Width="24" Height="24" />
             </Button>
 
@@ -29,8 +31,11 @@
         </StackPanel>
 
         <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <DataGrid Background="Black" Name="dataGrid" SelectedItem="{Binding SelectedDish}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" 
-                      ItemsSource="{Binding Dishes}" AutoGenerateColumns="False" Foreground="#000000">
+            <DataGrid Background="Black" Name="dataGrid" 
+                      SelectedItem="{Binding SelectedDish}" IsReadOnly="True" BorderBrush="LightGray" 
+                      FontSize="15" 
+                      ItemsSource="{Binding Dishes}" 
+                      AutoGenerateColumns="False" Foreground="#000000">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер" Binding="{Binding DishID}" />
                     <DataGridTextColumn Header="Название" Binding="{Binding DishName}" />

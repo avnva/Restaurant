@@ -14,7 +14,6 @@ public class WarehousesPageViewModel : ViewModelBase
 {
     private ObservableCollection<Warehouse> warehouses;
     private WarehouseRepository repository;
-    private Warehouse selectedWarehouse;
     private Supplier selectedSupplier;
 
     public event Action<Warehouse> NewWarehouseAdded;
@@ -29,15 +28,6 @@ public class WarehousesPageViewModel : ViewModelBase
         }
     }
 
-    public Warehouse SelectedWarehouse
-    {
-        get { return selectedWarehouse; }
-        set
-        {
-            selectedWarehouse = value;
-            OnPropertyChanged(nameof(SelectedWarehouse));
-        }
-    }
     public Supplier SelectedSupplier
     {
         get { return selectedSupplier; }
@@ -45,11 +35,10 @@ public class WarehousesPageViewModel : ViewModelBase
         {
             selectedSupplier = value;
             OnPropertyChanged(nameof(SelectedSupplier));
+
         }
     }
 
-    public RelayCommand AddNewWarehouseCommand { get; private set; }
-    public RelayCommand OpenWarehouseInfoCommand { get; private set; }
     public RelayCommand ReloadCommand { get; private set; }
     public RelayCommand OpenSupplierInfoCommand { get; private set; }
 
@@ -58,21 +47,9 @@ public class WarehousesPageViewModel : ViewModelBase
         repository = new WarehouseRepository(new RestaurantDbContext());
 
         ReloadCommand = new RelayCommand(LoadWarehouses);
-        AddNewWarehouseCommand = new RelayCommand(AddNewWarehouse);
-        OpenWarehouseInfoCommand = new RelayCommand(OpenWarehouseInfo, CanOpenWarehouseInfo);
         OpenSupplierInfoCommand = new RelayCommand(OpenSupplierInfo, CanOpenSupplierInfo);
 
         LoadWarehouses();
-    }
-
-    private bool CanOpenWarehouseInfo(object obj)
-    {
-        return SelectedWarehouse != null;
-    }
-
-    private void OpenWarehouseInfo(object obj)
-    {
-        OnNewWarehouseAdded(SelectedWarehouse);
     }
 
     private void LoadWarehouses(object obj = null)
@@ -81,22 +58,6 @@ public class WarehousesPageViewModel : ViewModelBase
         Warehouses = new ObservableCollection<Warehouse>(loadedWarehouses);
     }
 
-    private void AddNewWarehouse(object obj)
-    {
-        Warehouse newWarehouse = new Warehouse();
-
-        // Добавление информации о продукте для нового склада
-        Product newProduct = new Product(); // Создание нового продукта
-        newWarehouse.Product = newProduct; // Привязка продукта к складу
-
-        Supplier productSupplier = new Supplier();
-        newWarehouse.Supplier = productSupplier;
-        OnNewWarehouseAdded(new Warehouse());
-    }
-    private void OnNewWarehouseAdded(Warehouse warehouse)
-    {
-        NewWarehouseAdded?.Invoke(warehouse);
-    }
     private bool CanOpenSupplierInfo(object obj)
     {
         return SelectedSupplier != null;
@@ -104,11 +65,12 @@ public class WarehousesPageViewModel : ViewModelBase
 
     private void OpenSupplierInfo(object obj)
     {
-        OnNewSupplyAdded(SelectedSupplier);
+        OpenSupplierInfoPage(SelectedSupplier);
     }
-    private void OnNewSupplyAdded(Supplier supplier)
+    private void OpenSupplierInfoPage(Supplier supplier)
     {
-        SupplierInfo suuplyInfoPage = new SupplierInfo(supplier);
-        DataStore.Frame.NavigationService.Navigate(suuplyInfoPage);
+        SupplierInfo suplierInfoPage = new SupplierInfo(supplier);
+
+        DataStore.Frame.NavigationService.Navigate(suplierInfoPage);
     }
 }

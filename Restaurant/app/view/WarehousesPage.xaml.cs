@@ -27,17 +27,5 @@ namespace Restaurant.app.view
             DataContext = new WarehousesPageViewModel();
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender is DataGrid dataGrid)
-            {
-                if (dataGrid.SelectedItem is Warehouse selectedWarehouse)
-                {
-                    // Передать выбранный склад во ViewModel
-                    WarehousesPageViewModel viewModel = (WarehousesPageViewModel)DataContext;
-                    viewModel.SelectedWarehouse = selectedWarehouse;
-                }
-            }
-        }
     }
 }
