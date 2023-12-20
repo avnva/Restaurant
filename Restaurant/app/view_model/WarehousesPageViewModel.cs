@@ -14,7 +14,7 @@ public class WarehousesPageViewModel : ViewModelBase
 {
     private ObservableCollection<Warehouse> warehouses;
     private WarehouseRepository repository;
-    private Supplier selectedSupplier;
+    private Warehouse selectedWarehouse;
 
     public event Action<Warehouse> NewWarehouseAdded;
 
@@ -28,19 +28,19 @@ public class WarehousesPageViewModel : ViewModelBase
         }
     }
 
-    public Supplier SelectedSupplier
+    public Warehouse SelectedWarehouse
     {
-        get { return selectedSupplier; }
+        get { return selectedWarehouse; }
         set
         {
-            selectedSupplier = value;
-            OnPropertyChanged(nameof(SelectedSupplier));
+            selectedWarehouse = value;
+            OnPropertyChanged(nameof(SelectedWarehouse));
 
         }
     }
 
     public RelayCommand ReloadCommand { get; private set; }
-    public RelayCommand OpenSupplierInfoCommand { get; private set; }
+    public RelayCommand OpenSupplierInfoCommand { get; set; }
 
     public WarehousesPageViewModel()
     {
@@ -60,16 +60,16 @@ public class WarehousesPageViewModel : ViewModelBase
 
     private bool CanOpenSupplierInfo(object obj)
     {
-        return SelectedSupplier != null;
+        return SelectedWarehouse != null;
     }
 
     private void OpenSupplierInfo(object obj)
     {
-        OpenSupplierInfoPage(SelectedSupplier);
+        OpenSupplierInfoPage(SelectedWarehouse);
     }
-    private void OpenSupplierInfoPage(Supplier supplier)
+    private void OpenSupplierInfoPage(Warehouse warehouse)
     {
-        SupplierInfo suplierInfoPage = new SupplierInfo(supplier);
+        SupplierInfo suplierInfoPage = new SupplierInfo(warehouse.Supplier);
 
         DataStore.Frame.NavigationService.Navigate(suplierInfoPage);
     }

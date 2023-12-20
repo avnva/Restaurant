@@ -40,6 +40,7 @@ public class SuppliesPageViewModel : ViewModelBase
     public RelayCommand AddNewSupplyCommand { get; private set; }
     public RelayCommand OpenSupplyInfoCommand { get; private set; }
     public RelayCommand ReloadCommand { get; private set; }
+    public RelayCommand OpenSupplierInfoCommand { get; set; }
 
     public SuppliesPageViewModel()
     {
@@ -48,6 +49,7 @@ public class SuppliesPageViewModel : ViewModelBase
         ReloadCommand = new RelayCommand(LoadSupplies);
         AddNewSupplyCommand = new RelayCommand(AddNewSupply);
         OpenSupplyInfoCommand = new RelayCommand(OpenSupplyInfo, CanOpenSupplyInfo);
+        OpenSupplierInfoCommand = new RelayCommand(OpenSupplierInfo, CanOpenSupplierInfo);
 
         LoadSupplies();
     }
@@ -79,6 +81,20 @@ public class SuppliesPageViewModel : ViewModelBase
     private void OnNewSupplyAdded(Supply supply)
     {
         NewSupplyAdded?.Invoke(supply);
+    }
+    private bool CanOpenSupplierInfo(object obj)
+    {
+        return SelectedSupply != null;
+    }
+    private void OpenSupplierInfo(object obj)
+    {
+        OpenSupplierInfoPage(SelectedSupply);
+    }
+    private void OpenSupplierInfoPage(Supply supply)
+    {
+        SupplierInfo suplierInfoPage = new SupplierInfo(supply.Supplier);
+
+        DataStore.Frame.NavigationService.Navigate(suplierInfoPage);
     }
 
 }
