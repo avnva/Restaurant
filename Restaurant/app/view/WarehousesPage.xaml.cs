@@ -36,8 +36,6 @@ namespace Restaurant.app.view
                     // Передать выбранный склад во ViewModel
                     WarehousesPageViewModel viewModel = (WarehousesPageViewModel)DataContext;
                     viewModel.SelectedWarehouse = selectedWarehouse;
-
-                    // Теперь у вас есть выбранный склад в вашей ViewModel
                 }
             }
         }
