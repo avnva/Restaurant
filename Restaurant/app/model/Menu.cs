@@ -12,16 +12,15 @@ public class Menu
 {
     public Menu()
     {
-        DishInMenuId = null;
+        DishInMenuID = null;
     }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
     [Column("DishInMenuID")]
-    public int? DishInMenuId { get; set; }
+    public int? DishInMenuID { get; set; }
     [Column("DishID")]
     public int DishId { get; set; }
     [Column("StatusID")]
     public int StatusId { get; set; }
-    public string Comment { get; set; }
 }

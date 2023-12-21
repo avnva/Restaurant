@@ -61,7 +61,7 @@
                 </StackPanel>
 
                 <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
-                    <ListBox Grid.Row="0" ItemsSource="{Binding Ingredients}" Height="154" Width="375">
+                    <ListBox Grid.Row="0" ItemsSource="{Binding DishesProducts}" Height="154" Width="375">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="5" Orientation="Horizontal">

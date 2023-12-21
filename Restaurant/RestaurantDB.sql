@@ -167,8 +167,6 @@ ALTER TABLE "SuppliesProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Product
 
 ALTER TABLE "Requests" ADD FOREIGN KEY ("DepartmentID") REFERENCES "Departments" ("DepartmentID");
 
-ALTER TABLE "Requests" ADD FOREIGN KEY ("RequestTypeID") REFERENCES "RequestTypes" ("RequestTypesID");
-
 ALTER TABLE "RequestsProducts" ADD FOREIGN KEY ("RequestID") REFERENCES "Requests" ("RequestID");
 
 ALTER TABLE "RequestsProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");

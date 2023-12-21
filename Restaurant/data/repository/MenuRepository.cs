@@ -29,24 +29,28 @@ public class MenuRepository
     {
         return _context.Menu.Find(dishInMenuId);
     }
-
+    public int GetMaxDishId()
+    {
+        // Получаем максимальный ID из базы данных
+        var maxId = _context.Menu.Max(d => d.DishInMenuID) ?? 0;
+        return maxId;
+    }
     // UPDATE
     public void UpdateDishInMenu(Menu updatedMenu)
     {
-        var existingMenu = _context.Menu.Find(updatedMenu);
+        var existingMenu = _context.Menu.Find(updatedMenu.DishInMenuID);
 
         if (existingMenu != null)
         {
             existingMenu.DishId = updatedMenu.DishId;
             existingMenu.StatusId = updatedMenu.StatusId;
-            existingMenu.Comment = updatedMenu.Comment;
 
             _context.SaveChanges();
         }
     }
 
     // DELETE
-    public void RemoveDishFromMenu(int dishInMenuId)
+    public void RemoveDishFromMenu(int? dishInMenuId)
     {
         var menuToRemove = _context.Menu.Find(dishInMenuId);
 
