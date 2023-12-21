@@ -56,7 +56,7 @@ public class RequestsPageViewModel : ViewModelBase
     private void ReduceGrid(object obj)
     {
         repository = new RequestRepository(new RestaurantDbContext());
-        LoadRequests
+        LoadRequests();
     }
     private bool CanOpenRequestInfo(object obj)
     {
