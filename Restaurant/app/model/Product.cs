@@ -16,4 +16,8 @@ public class Product
     public string ProductName { get; set; }
     public int UnitsOfMeasureID { get; set; }
     public decimal PriceMarkup { get; set; }
+
+    [ForeignKey("UnitsOfMeasureID")]
+    public UnitOfMeasure UnitOfMeasure { get; set; }
+
 }

@@ -25,7 +25,7 @@ public class RestaurantDbContext : DbContext
     public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<Request> Requests { get; set; }
     public DbSet<Department> Departments { get; set; }
-
+    public DbSet <DishesProducts> DishesProducts { get; set; }
 
 
 

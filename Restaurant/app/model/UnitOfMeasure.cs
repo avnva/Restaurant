@@ -12,6 +12,6 @@ public class UnitOfMeasure
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
-    public int UnitOfMeasureId { get; set; }
-    public string UnitOfMeasureName { get; set; }
+    public int UnitsOfMeasureID { get; set; }
+    public string UnitsOfMeasureName { get; set; }
 }

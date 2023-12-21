@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Restaurant.repository;
@@ -30,6 +31,10 @@ public class ProductRepository
         return _context.Products.Find(productId);
     }
 
+    public List<Product> GetProductsWithUnitOfMeasure()
+    {
+        return _context.Products.Include(p => p.UnitOfMeasure).ToList();
+    }
     // UPDATE
     public void UpdateProduct(Product updatedProduct)
     {

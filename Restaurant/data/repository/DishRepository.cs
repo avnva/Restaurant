@@ -31,6 +31,13 @@ public class DishRepository
         return _context.Dishes.Find(dishId);
     }
 
+    public int GetMaxDishId()
+    {
+        // Получаем максимальный ID из базы данных
+        var maxId = _context.Dishes.Max(d => (int?)d.DishID) ?? 0;
+        return maxId;
+    }
+
     // UPDATE
     public void UpdateDish(Dish updatedDish)
     {

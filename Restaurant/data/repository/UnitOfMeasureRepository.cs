@@ -37,7 +37,7 @@ public class UnitOfMeasureRepository
 
         if (existingUnitOfMeasure != null)
         {
-            existingUnitOfMeasure.UnitOfMeasureName = updatedUnitOfMeasure.UnitOfMeasureName;
+            existingUnitOfMeasure.UnitsOfMeasureName = updatedUnitOfMeasure.UnitsOfMeasureName;
 
             _context.SaveChanges();
         }

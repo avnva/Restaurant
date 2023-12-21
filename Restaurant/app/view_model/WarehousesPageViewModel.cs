@@ -41,6 +41,7 @@ public class WarehousesPageViewModel : ViewModelBase
 
     public RelayCommand ReloadCommand { get; private set; }
     public RelayCommand OpenSupplierInfoCommand { get; set; }
+    public RelayCommand ReduceGridCommand { get; set; }
 
     public WarehousesPageViewModel()
     {
@@ -48,8 +49,13 @@ public class WarehousesPageViewModel : ViewModelBase
 
         ReloadCommand = new RelayCommand(LoadWarehouses);
         OpenSupplierInfoCommand = new RelayCommand(OpenSupplierInfo, CanOpenSupplierInfo);
+        ReduceGridCommand = new RelayCommand(ReduceGrid);
 
         LoadWarehouses();
+    }
+    private void ReduceGrid(object obj)
+    {
+
     }
 
     private void LoadWarehouses(object obj = null)

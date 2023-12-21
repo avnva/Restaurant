@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-      xmlns:local="clr-namespace:Restaurant" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Restaurant" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditDishInfoPage">
@@ -23,7 +24,8 @@
                 <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Выберите категорию продукта" IsEditable="True" ItemsSource="{Binding DishGroups, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDishGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="GroupName"/>
 
                 <TextBlock Margin="10 5 10 0" Text="Статус: " Foreground="White" VerticalAlignment="Center"/>
-                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название образовательной организации" IsEditable="True" ItemsSource="{Binding Statuses, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="StatusName"/>
+                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" 
+                          IsEditable="True" ItemsSource="{Binding Statuses, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="StatusName"/>
 
                 <TextBlock Margin="10 5 10 0" Text="Стоимость (руб.):" Foreground="White"/>
                 <TextBox Margin="10 5 10 0" Text="{Binding Dish.DishCost}" FontSize="15"  VerticalAlignment="Center"/>
@@ -32,8 +34,8 @@
                 <TextBox Margin="10 5 10 0" Text="{Binding Dish.OutputWeight}" FontSize="15"  VerticalAlignment="Center"/>
 
                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-                    <Button Margin="5" Content="Удалить" Command="{Binding DeleteEduDocumentCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
-                    <Button Margin="5" Content="Сохранить" Command="{Binding SaveEduDocumentCommand}"/>
+                    <Button Margin="5" Content="Удалить" Command="{Binding DeleteCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                    <Button Margin="5" Content="Сохранить" Command="{Binding SaveCommand}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -43,32 +45,43 @@
                      VerticalAlignment="Center"
                      AcceptsReturn="True" TextWrapping="Wrap" MaxLines="6"/>
 
-                <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Foreground="White" TextAlignment="Center"/>
+                <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Foreground="White" TextAlignment="Center" Height="20"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Grid.Row="0" Command="{Binding AddPassportCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Left">
-                        <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+                    <Button Grid.Row="0" Command="{Binding AddDishCommand}" 
+                            Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="Add" Width="24" Height="24" 
+                                                 HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Button>
-                    <ComboBox Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Поиск" IsEditable="True" ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="ProductName" Width="198"/>
-                    <xctk:IntegerUpDown Name="myUpDownControl" />
+                    <ComboBox Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Поиск" IsEditable="True" 
+                              ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" 
+                              DisplayMemberPath="ProductName" Width="198"/>
+                    <xctk:IntegerUpDown VerticalAlignment="Top" x:Name="productQuantity" Height="26"
+                                         Value="{Binding SelectedQuantity, Mode=TwoWay}"/>
                 </StackPanel>
-               
+
                 <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
-                    <ListBox Grid.Row="0" ItemsSource="{Binding Ingredients}" SelectedItem="{Binding SelectedProduct}" Height="230">
+                    <ListBox Grid.Row="0" ItemsSource="{Binding Ingredients}" Height="154" Width="375">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="5" Orientation="Horizontal">
                                     <StackPanel Margin="5 0">
-                                        <TextBlock FontSize="15" Text="Название" FontWeight="Bold"/>
-                                        <TextBlock FontSize="15" Text="{Binding Path=ProductName}"/>
+                                        <TextBlock FontSize="10" Text="Название" FontWeight="Bold"/>
+                                        <TextBlock FontSize="10" Text="{Binding Product.ProductName}"/>
                                     </StackPanel>
                                     <StackPanel Margin="5 0">
-                                        <TextBlock FontSize="15" Text="Количество" FontWeight="Bold"/>
-                                        <TextBlock FontSize="15" Text="{Binding Path=Number}"/>
+                                        <TextBlock FontSize="10" Text="Количество" FontWeight="Bold"/>
+                                        <TextBlock FontSize="10" Text="{Binding Quantity}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5 0">
+                                        <TextBlock FontSize="10" Text="Единица измерения" FontWeight="Bold"/>
+                                        <TextBlock FontSize="10" Text="{Binding Product.UnitOfMeasure.UnitsOfMeasureName}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+
                 </ScrollViewer>
             </StackPanel>
         </Grid>
