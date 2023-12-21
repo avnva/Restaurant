@@ -55,7 +55,8 @@ public class WarehousesPageViewModel : ViewModelBase
     }
     private void ReduceGrid(object obj)
     {
-
+        repository = new WarehouseRepository(new RestaurantDbContext());
+        LoadWarehouses();
     }
 
     private void LoadWarehouses(object obj = null)

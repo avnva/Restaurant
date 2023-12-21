@@ -8,7 +8,9 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:LogInViewModel}"
         mc:Ignorable="d"
         Title="Авторизация" Height="350" Width="525"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
+        
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

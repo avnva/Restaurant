@@ -25,7 +25,7 @@
                 <materialDesign:PackIcon Kind="Edit" Width="24" Height="24" />
             </Button>
 
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding ReloadCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding ReduceGridCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Reload" Width="24" Height="24" />
             </Button>
             <Button Content="Смотреть информацию о поставщике"  

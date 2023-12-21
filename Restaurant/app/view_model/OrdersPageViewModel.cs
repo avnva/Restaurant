@@ -39,6 +39,7 @@ public class OrdersPageViewModel : ViewModelBase
     public RelayCommand AddNewOrderCommand { get; private set; }
     public RelayCommand OpenOrderInfoCommand { get; private set; }
     public RelayCommand ReloadCommand { get; private set; }
+    public RelayCommand ReduceGridCommand { get; private set; }
 
     public OrdersPageViewModel()
     {
@@ -47,7 +48,13 @@ public class OrdersPageViewModel : ViewModelBase
         ReloadCommand = new RelayCommand(LoadOrders);
         AddNewOrderCommand = new RelayCommand(AddNewOrder);
         OpenOrderInfoCommand = new RelayCommand(OpenOrderInfo, CanOpenOrderInfo);
+        ReduceGridCommand = new RelayCommand(ReduceGrid);
 
+        LoadOrders();
+    }
+    private void ReduceGrid(object obj)
+    {
+        repository = new OrderRepository(new RestaurantDbContext());
         LoadOrders();
     }
 

@@ -40,6 +40,7 @@ public class RequestsPageViewModel : ViewModelBase
     public RelayCommand AddNewRequestCommand { get; private set; }
     public RelayCommand OpenRequestInfoCommand { get; private set; }
     public RelayCommand ReloadCommand { get; private set; }
+    public RelayCommand ReduceGridCommand { get; private set; }
 
     public RequestsPageViewModel()
     {
@@ -48,10 +49,15 @@ public class RequestsPageViewModel : ViewModelBase
         ReloadCommand = new RelayCommand(LoadRequests);
         AddNewRequestCommand = new RelayCommand(AddNewRequest);
         OpenRequestInfoCommand = new RelayCommand(OpenRequestInfo, CanOpenRequestInfo);
+        ReduceGridCommand = new RelayCommand(ReduceGrid);
 
         LoadRequests();
     }
-
+    private void ReduceGrid(object obj)
+    {
+        repository = new RequestRepository(new RestaurantDbContext());
+        LoadRequests
+    }
     private bool CanOpenRequestInfo(object obj)
     {
         return SelectedRequest != null;
