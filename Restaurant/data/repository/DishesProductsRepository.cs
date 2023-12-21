@@ -1,4 +1,5 @@
-﻿using Restaurant.app.model;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurant.app.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ public class DishesProductsRepository
     public DishesProductsRepository(RestaurantDbContext context)
     {
         _context = context;
+
+        Console.WriteLine(context.DishesProducts.First());
     }
 
     // CREATE
@@ -26,67 +29,42 @@ public class DishesProductsRepository
     // READ
     public List<DishesProducts> Get()
     {
-        var dishProducts = _context.DishesProducts.ToList();
+        Console.WriteLine(_context.DishesProducts.ToList());
 
-        foreach (var dish in _context.Dishes)
-        {
-            var ingredients = dishProducts.Where(dp => dp.DishID == dish.DishID).ToList();
 
-            var distinctProducts = ingredients.GroupBy(dp => dp.ProductID)
-                                             .Select(group => new
-                                             {
-                                                 ProductID = group.Key,
-                                                 TotalQuantity = group.Sum(item => item.Quantity)
-                                             })
-                                             .ToList();
+        return _context.DishesProducts.Include(p => p.Dish).
+            Include(p => p.Product)
+            .ToList();
 
-            // Удаляем текущие записи о продуктах для данного блюда
-            _context.DishesProducts.RemoveRange(ingredients);
-
-            // Добавляем новые записи с обновленными количествами продуктов
-            foreach (var productGroup in distinctProducts)
-            {
-                _context.DishesProducts.Add(new DishesProducts
-                {
-                    //DishID = dish.DishID,
-                    ProductID = productGroup.ProductID,
-                    Quantity = productGroup.TotalQuantity
-                });
-            }
-        }
-
-        _context.SaveChanges();
-        return _context.DishesProducts.ToList();
     }
 
-    //public DishGroup GetDishGroupById(int groupId)
-    //{
-    //    return _context.DishGroups.Find(groupId);
-    //}
 
     // UPDATE
     public void Update(DishesProducts updatedDishesProducts)
     {
-        var existingDishesProducts = _context.DishesProducts.Find(updatedDishesProducts);
+        var existingDishesProducts = _context.DishesProducts.Find(updatedDishesProducts.DishID, updatedDishesProducts.ProductID);
 
         if (existingDishesProducts != null)
         {
-            existingDishesProducts.DishID = updatedDishesProducts.DishID;
-            existingDishesProducts.ProductID = updatedDishesProducts.ProductID;
             existingDishesProducts.Quantity = updatedDishesProducts.Quantity;
-
-            _context.SaveChanges();
         }
+        else
+        {
+            _context.DishesProducts.Add(updatedDishesProducts);
+        }
+
+        _context.SaveChanges();
     }
 
+
     // DELETE
-    public void Delete(int groupId)
+    public void Delete(int dishId)
     {
-        var dishesProductsToDelete = _context.DishesProducts.Find(groupId);
+        var dishesProductsToDelete = _context.DishesProducts.Where(d => d.DishID == dishId);
 
         if (dishesProductsToDelete != null)
         {
-            _context.DishesProducts.Remove(dishesProductsToDelete);
+            _context.DishesProducts.RemoveRange(dishesProductsToDelete);
             _context.SaveChanges();
         }
     }

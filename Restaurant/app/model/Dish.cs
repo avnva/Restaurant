@@ -10,7 +10,7 @@ public class Dish
 {
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int? DishID { get; set; }
+    public int DishID { get; set; }
 
     [Required(ErrorMessage = "Необходимо выбрать категорию")]
     public int GroupID { get; set; }

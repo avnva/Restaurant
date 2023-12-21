@@ -41,7 +41,7 @@ public class DishRepository
     // UPDATE
     public void UpdateDish(Dish updatedDish)
     {
-        var existingDish = _context.Dishes.Find(updatedDish);
+        var existingDish = _context.Dishes.Find(updatedDish.DishID);
 
         if (existingDish != null)
         {

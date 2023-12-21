@@ -43,6 +43,7 @@ public class RestaurantDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Order>().Ignore(o => o.OrderedDishes);
+        modelBuilder.Entity<DishesProducts>().HasKey(dp => new { dp.DishID, dp.ProductID });
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)

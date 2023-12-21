@@ -42,7 +42,7 @@
                     <DataGridTextColumn Header="Номер" Binding="{Binding DishID}" />
                     <DataGridTextColumn Header="Название" Binding="{Binding DishName}" />
                     <DataGridTextColumn Header="Цена" Binding="{Binding DishCost}" />
-                    <DataGridTextColumn Header="Комментарий" Binding="{Binding CookingTechnology}" />
+                    <DataGridTextColumn Header="Технология приготовления" Binding="{Binding CookingTechnology}" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
