@@ -70,7 +70,6 @@ public class SuppliesPageViewModel : ViewModelBase
     private void OpenSupplyInfo(object obj)
     {
         OpenSupplyInfoPage(SelectedSupply);
-        //OnNewSupplyAdded(SelectedSupply);
     }
 
     private void LoadSupplies(object obj = null)
@@ -81,17 +80,11 @@ public class SuppliesPageViewModel : ViewModelBase
 
     private void AddNewSupply(object obj)
     {
-        //Supply newSupply = new Supply();
 
-        //Supplier productSupplier = new Supplier();
-        //newSupply.Supplier = productSupplier;
         OpenSupplyInfoPage(null);
-        //OnNewSupplyAdded(new Supply());
+
     }
-    //private void OnNewSupplyAdded(Supply supply)
-    //{
-    //    NewSupplyAdded?.Invoke(supply);
-    //}
+
     private bool CanOpenSupplierInfo(object obj)
     {
         return SelectedSupply != null;

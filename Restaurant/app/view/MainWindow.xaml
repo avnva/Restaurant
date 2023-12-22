@@ -28,20 +28,10 @@
             <MenuItem Foreground="White" Header="Поставки" Click="Supplies_Click" Style="{StaticResource MenuItemStyle}">
             </MenuItem>
 
-            <MenuItem Header="Заявки" Foreground="White">
-                <MenuItem Header="Создать заявку" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
-
-                <MenuItem Header="Список заявок"  Click="Requests_Click" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
+            <MenuItem Header="Заявки" Foreground="White" Click="Requests_Click">
             </MenuItem>
 
-            <MenuItem Header="Реализация" Foreground="White" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="Создать заказ" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
-
-                <MenuItem Header="Список заказов"  Click="Orders_Click" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
+            <MenuItem Header="Реализация" Foreground="White"  Click="Orders_Click" Style="{StaticResource MenuItemStyle}">
             </MenuItem>
 
             <MenuItem Foreground="White" Header="Помощь" Style="{StaticResource MenuItemStyle}">

@@ -37,7 +37,7 @@ public class OrdersDishesRepository
     // UPDATE
     public void Update(OrdersDishes updatedOrdersDishes)
     {
-        var existingOrdersDishes = _context.DishesProducts.Find(updatedOrdersDishes.DishID, updatedOrdersDishes.OrderID);
+        var existingOrdersDishes = _context.OrdersDishes.Find(updatedOrdersDishes.OrderID, updatedOrdersDishes.DishID);
 
         if (existingOrdersDishes != null)
         {
@@ -49,6 +49,7 @@ public class OrdersDishesRepository
             _context.Entry(updatedOrdersDishes).State = EntityState.Added;
             _context.SaveChanges();
         }
+
     }
 
 

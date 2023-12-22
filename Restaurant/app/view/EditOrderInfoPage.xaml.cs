@@ -1,5 +1,4 @@
-﻿using Restaurant.app.model;
-using Restaurant.app.view_model;
+﻿using Restaurant.app.view_model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +17,15 @@ using System.Windows.Shapes;
 namespace Restaurant.app.view
 {
     /// <summary>
-    /// Логика взаимодействия для EditSupllyInfoPage.xaml
+    /// Логика взаимодействия для EditOrderInfoPage.xaml
     /// </summary>
-    public partial class EditSupllyInfoPage : Page
+    public partial class EditOrderInfoPage : Page
     {
-        public EditSupllyInfoPage(Supply supply)
+        public EditOrderInfoPage(Order order)
         {
             InitializeComponent();
-            DataContext = new EditSupplyViewModel(supply);
-            if (supply == null)
+            DataContext = new EditOrderViewModel(order);
+            if (order == null)
             {
                 // Скрываем кнопку удаления, если объект Order равен null
                 Delete.Visibility = Visibility.Collapsed;
