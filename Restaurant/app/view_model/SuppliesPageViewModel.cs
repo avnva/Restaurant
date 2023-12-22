@@ -43,6 +43,7 @@ public class SuppliesPageViewModel : ViewModelBase
     public RelayCommand OpenSupplierInfoCommand { get; set; }
     public RelayCommand ReduceGridCommand { get; set; }
 
+
     public SuppliesPageViewModel()
     {
         repository = new SupplyRepository(new RestaurantDbContext());
@@ -80,11 +81,11 @@ public class SuppliesPageViewModel : ViewModelBase
 
     private void AddNewSupply(object obj)
     {
-        Supply newSupply = new Supply();
+        //Supply newSupply = new Supply();
 
-        Supplier productSupplier = new Supplier();
-        newSupply.Supplier = productSupplier;
-        OpenSupplyInfoPage(new Supply());
+        //Supplier productSupplier = new Supplier();
+        //newSupply.Supplier = productSupplier;
+        OpenSupplyInfoPage(null);
         //OnNewSupplyAdded(new Supply());
     }
     //private void OnNewSupplyAdded(Supply supply)

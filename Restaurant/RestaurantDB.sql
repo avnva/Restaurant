@@ -151,6 +151,10 @@ ALTER TABLE "DishesProducts" ADD FOREIGN KEY ("DishID") REFERENCES "Dishes" ("Di
 
 ALTER TABLE "DishesProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");
 
+ALTER TABLE "OrdersDishes" ADD FOREIGN KEY ("OrderID") REFERENCES "Orders" ("OrderID");
+
+ALTER TABLE "OrdersDishes" ADD FOREIGN KEY ("DishID") REFERENCES "Dishes" ("DishID");
+
 ALTER TABLE "DepartmentsProducts" ADD FOREIGN KEY ("DepartmentID") REFERENCES "Departments" ("DepartmentID");
 
 ALTER TABLE "DepartmentsProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");

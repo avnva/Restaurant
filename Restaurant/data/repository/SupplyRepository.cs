@@ -32,11 +32,17 @@ public class SupplyRepository
     {
         return _context.Supplies.Find(supplyId);
     }
+    public int GetMaxSupplyId()
+    {
+        // Получаем максимальный ID из базы данных
+        var maxId = _context.Supplies.Max(d => (int?)d.SupplyID) ?? 0;
+        return maxId;
+    }
 
     // UPDATE
     public void UpdateSupply(Supply updatedSupply)
     {
-        var existingSupply = _context.Supplies.Find(updatedSupply);
+        var existingSupply = _context.Supplies.Find(updatedSupply.SupplyID);
 
         if (existingSupply != null)
         {

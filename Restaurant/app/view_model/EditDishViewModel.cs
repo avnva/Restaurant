@@ -30,7 +30,7 @@ namespace Restaurant
         private Product selectedProduct;
 
         public Dish Dish { get; set; }
-        public Dish dish;
+        //public Dish dish;
         public Menu Menu { get; set; }
 
         public ObservableCollection<Status> Statuses { get; set; }
@@ -42,16 +42,6 @@ namespace Restaurant
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand DeleteDishCommand { get; set; }
 
-        private DishesProducts selectedIngredient;
-        public DishesProducts SelectedIngredient
-        {
-            get { return selectedIngredient; }
-            set
-            {
-                selectedIngredient = value;
-                OnPropertyChanged(nameof(SelectedIngredient));
-            }
-        }
 
         public Status SelectedStatus
         {
