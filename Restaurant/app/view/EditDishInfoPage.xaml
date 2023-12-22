@@ -21,7 +21,10 @@
                 <TextBox Margin="10 5 10 0" Text="{Binding Dish.DishName}" FontSize="15"  VerticalAlignment="Center"/>
 
                 <TextBlock Margin="10 5 10 0" Text="Категория: " Foreground="White" VerticalAlignment="Center"/>
-                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Выберите категорию продукта" IsEditable="True" ItemsSource="{Binding DishGroups, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDishGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="GroupName"/>
+                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" 
+                          materialDesign:HintAssist.Hint="Выберите категорию продукта" IsEditable="True" 
+                          ItemsSource="{Binding DishGroups, UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedItem="{Binding SelectedDishGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="GroupName"/>
 
                 <TextBlock Margin="10 5 10 0" Text="Статус: " Foreground="White" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" 
@@ -46,7 +49,7 @@
                      AcceptsReturn="True" TextWrapping="Wrap" MaxLines="6"/>
 
                 <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Foreground="White" TextAlignment="Center" Height="20"/>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Width="384">
                     <Button Grid.Row="0" Command="{Binding AddDishCommand}" 
                             Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" VerticalAlignment="Top">
                         <materialDesign:PackIcon Kind="Add" Width="24" Height="24" 

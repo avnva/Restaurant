@@ -41,7 +41,7 @@ public class EditSupplyViewModel : ViewModelBase
         supplierRepository = new SupplierRepository(db);
         Suppliers = new ObservableCollection<Supplier>(supplierRepository.GetSuppliers());
 
-        //Supplier.SupplierID = Suppliers.FirstOrDefault(i => i.SupplierID == Supplier.GroupID);
+        SelectedSupplier = Suppliers.FirstOrDefault(i => i.SupplierID == Supply.Supplier.SupplierID);
         //SelectedSupplier = Supplier.DishGroup;
     }
 }

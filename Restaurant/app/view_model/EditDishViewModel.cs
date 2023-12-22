@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Restaurant
 {
@@ -215,6 +216,7 @@ namespace Restaurant
                         // Вызовите Update после установки DishID и ProductID
                         dishesProductsRepository.Update(product);
                     }
+
                 }
                 else
                 {
@@ -236,6 +238,8 @@ namespace Restaurant
                     }
                     
                 }
+                MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Блюдо сохранено", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+                args.Show();
             }
 
         }

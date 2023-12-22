@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditSupllyInfoPage">
@@ -19,7 +19,7 @@
 
                 <TextBlock Margin="10 5 10 0" Text="Поставщик: " Foreground="White" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" 
-                          materialDesign:HintAssist.Hint="Выберите категорию продукта" 
+                          materialDesign:HintAssist.Hint="Выберите поставщика" 
                           IsEditable="True" ItemsSource="{Binding Suppliers, UpdateSourceTrigger=PropertyChanged}" 
                           SelectedItem="{Binding SelectedSupplier, UpdateSourceTrigger=PropertyChanged}" 
                           DisplayMemberPath="SupplierName"/>
@@ -38,9 +38,50 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="1">
-              
-
                 <TextBlock Margin="10 5 10 0" Text="Выбор ингредиентов" Foreground="White" TextAlignment="Center"/>
+
+                <StackPanel Orientation="Horizontal" Width="385">
+                    <Button Grid.Row="0" Command="{Binding AddDishCommand}" 
+                            Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="Add" Width="24" Height="24" 
+                                                 HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                    <Button Grid.Row="0" Command="{Binding DeleteDishCommand}" 
+                            Width="24" Height="24" Margin="5 2" BorderBrush="#FFB73A3A" Background="#FFB73A3A" Padding="0,0,0,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="Delete" Width="24" Height="24" 
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                    <ComboBox Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Поиск" IsEditable="True" 
+                              ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" 
+                              SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" 
+                              DisplayMemberPath="ProductName" Width="198"/>
+                    <xctk:IntegerUpDown VerticalAlignment="Top" x:Name="productQuantity" Height="26"
+                                         Value="{Binding SelectedQuantity, Mode=TwoWay}"/>
+                </StackPanel>
+                
+                <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+                    <ListBox Grid.Row="0" ItemsSource="{Binding DishesProducts}" Height="154" Width="375">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5" Orientation="Horizontal">
+                                    <StackPanel Margin="5 0">
+                                        <TextBlock FontSize="10" Text="Название" FontWeight="Bold"/>
+                                        <TextBlock FontSize="10" Text="{Binding Product.ProductName}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5 0">
+                                        <TextBlock FontSize="10" Text="Количество" FontWeight="Bold"/>
+                                        <TextBlock FontSize="10" Text="{Binding Quantity}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5 0">
+                                        <TextBlock FontSize="10" Text="Единица измерения" FontWeight="Bold"/>
+                                        <TextBlock FontSize="10" Text="{Binding Product.UnitOfMeasure.UnitsOfMeasureName}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </ScrollViewer>
             </StackPanel>
         </Grid>
     </ScrollViewer>
