@@ -47,14 +47,15 @@ public class DishesProductsRepository
         if (existingDishesProducts != null)
         {
             existingDishesProducts.Quantity = updatedDishesProducts.Quantity;
+            _context.SaveChanges();
         }
         else
         {
-            _context.DishesProducts.Add(updatedDishesProducts);
+            _context.Entry(updatedDishesProducts).State = EntityState.Added;
+            _context.SaveChanges();
         }
-
-        _context.SaveChanges();
     }
+
 
 
     // DELETE

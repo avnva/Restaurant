@@ -1,4 +1,5 @@
-﻿using Restaurant.app.model;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurant.app.model;
 using Restaurant.data.repository;
 using Restaurant.repository;
 using System;
@@ -38,7 +39,7 @@ namespace Restaurant
         public RelayCommand AddDishCommand { get; set; }
 
         public RelayCommand SaveCommand { get; set; }
-        public RelayCommand DeleteCommand { get; set; }
+        public RelayCommand DeleteDishCommand { get; set; }
 
         private DishesProducts selectedIngredient;
         public DishesProducts SelectedIngredient
@@ -114,55 +115,81 @@ namespace Restaurant
 
         private void AddDish(object obj)
         {
-            if (SelectedProduct != null && SelectedQuantity > 0)
+                // Проверка существующего ингредиента в коллекции
+            if(SelectedProduct != null && SelectedQuantity > 0)
             {
                 // Проверка существующего ингредиента в коллекции
-                var existingIngredient = DishesProducts.FirstOrDefault(d => d.Product.ProductID == SelectedProduct.ProductID);
-
-                if (existingIngredient != null)
+                bool flag = false;
+                foreach (var dish in DishesProducts)
                 {
-                    // Ингредиент уже существует, обновляем его количество
-                    existingIngredient.Quantity += SelectedQuantity;
+                    if (dish.DishID == Dish.DishID && dish.ProductID == SelectedProduct.ProductID)
+                    {
+                        dish.Quantity += SelectedQuantity;
+
+                        flag = true;
+                    }
                 }
-                else
+                if (!flag)
                 {
                     // Ингредиент не найден, добавляем новый
-                    var newDishProduct = new DishesProducts
-                    {
-                        Product = SelectedProduct,
-                        Quantity = SelectedQuantity
-                    };
+                var newDishProduct = new DishesProducts
+                {
+                    DishID = Dish.DishID,
+                    ProductID = SelectedProduct.ProductID,
+                    Dish = Dish,
+                    Product = SelectedProduct,
+                    Quantity = SelectedQuantity
+                };
 
-                    DishesProducts.Add(newDishProduct);
+                DishesProducts.Add(newDishProduct);
                 }
-
-                dishRepository.UpdateDish(Dish);
-
-
+                DishesProducts = new ObservableCollection<DishesProducts>(DishesProducts);
+                OnPropertyChanged(nameof(DishesProducts));
+            }
+            else
+            {
+                MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Пожалуйста, выберите продукт и количество.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                args.Show();
             }
         }
         private void DeleteDish(object obj)
         {
-            if (Dish.DishID != 0)
+            bool flag = false;
+            if (SelectedProduct != null && SelectedQuantity > 0)
             {
-                //удалить каскадно!!!
-                menuRepository.RemoveDishFromMenu(Menu.DishInMenuID);
-
-                // Удаляем записи из таблицы DishesProducts
-                foreach (var product in DishesProducts)
+                // Проверка существующего ингредиента в коллекции
+                foreach (var dish in DishesProducts)
                 {
-                    dishesProductsRepository.Delete(product.DishID);
+                    if (dish.DishID == Dish.DishID && dish.ProductID == SelectedProduct.ProductID && dish.Quantity == SelectedQuantity)
+                    {
+                        DishesProducts.Remove(dish);
+                        flag = true;
+                    }
+                    else if (dish.DishID == Dish.DishID && dish.ProductID == SelectedProduct.ProductID && dish.Quantity > SelectedQuantity)
+                    {
+                        dish.Quantity -= SelectedQuantity;
+                        flag = true;
+                    }
+                    
                 }
-
-                // Удаляем само блюдо из таблицы Dishes
-                dishRepository.DeleteDish(Dish.DishID);
+                if (flag == false)
+                {
+                    MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Некорректные данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    args.Show();
+                }
+                DishesProducts = new ObservableCollection<DishesProducts>(DishesProducts);
+                OnPropertyChanged(nameof(DishesProducts));
             }
+            else
+            {
+                MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Пожалуйста, выберите продукт и количество.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                args.Show();
+            }
+
         }
 
         private void SaveChanges(object obj)
         {
-            // Логика сохранения изменений в базе данных
-            // Вызывается только после нажатия кнопки "Сохранить"
             if (string.IsNullOrEmpty(Dish.DishName) || Dish.GroupID == 0 || Dish.DishCost == 0 || Dish.OutputWeight == 0 || string.IsNullOrEmpty(Dish.CookingTechnology) || DishesProducts.Count() == 0)
             {
                 MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Пожалуйста, заполните все обязательные поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -173,6 +200,7 @@ namespace Restaurant
                 if (Dish.DishID != 0)
                 {
                     // Если блюдо уже существует, обновляем его данные
+                    //Dish.Status = SelectedStatus;
                     dishRepository.UpdateDish(Dish);
 
                     Menu.StatusId = SelectedStatus.StatusId;
@@ -252,7 +280,7 @@ namespace Restaurant
             AddDishCommand = new RelayCommand(AddDish);
             SaveCommand = new RelayCommand(SaveChanges);
             SelectDishesProducts(allDishesProducts);
-            DeleteCommand = new RelayCommand(DeleteDish);
+            DeleteDishCommand = new RelayCommand(DeleteDish);
             //Ingredients = new ObservableCollection<DishesProducts>(DishesProducts);
 
             Dish.DishGroup = DishGroups.FirstOrDefault(i => i.GroupId == Dish.GroupID);
