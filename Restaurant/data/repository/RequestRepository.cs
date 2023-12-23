@@ -32,7 +32,12 @@ public class RequestRepository
     {
         return _context.Requests.Find(requestId);
     }
-
+    public int GetMaxRequestId()
+    {
+        // Получаем максимальный ID из базы данных
+        var maxId = _context.Requests.Max(d => (int?)d.RequestID) ?? 0;
+        return maxId;
+    }
     // UPDATE
     public void UpdateRequest(Request updatedRequest)
     {

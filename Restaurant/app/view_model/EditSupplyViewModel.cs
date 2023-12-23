@@ -233,7 +233,8 @@ public class EditSupplyViewModel : ViewModelBase
     {
         db = new RestaurantDbContext();
         Supply = supply;
-        
+        SelectedQuantity = 1;
+
 
         supplierRepository = new SupplierRepository(db);
         supplyRepository = new SupplyRepository(db);

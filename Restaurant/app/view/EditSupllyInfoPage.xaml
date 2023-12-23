@@ -60,7 +60,7 @@
                               ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" 
                               DisplayMemberPath="ProductName" Width="198"/>
-                    <xctk:IntegerUpDown VerticalAlignment="Top" x:Name="productQuantity" Height="26"
+                    <xctk:IntegerUpDown Minimum="1"  VerticalAlignment="Top" x:Name="productQuantity" Height="26"
                                          Value="{Binding SelectedQuantity, Mode=TwoWay}"/>
                 </StackPanel>
                 

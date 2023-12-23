@@ -221,6 +221,7 @@ public class EditOrderViewModel : ViewModelBase
     {
         db = new RestaurantDbContext();
         Order = order;
+        SelectedQuantity = 1;
 
         orderRepository = new OrderRepository(db);
         ordersDishesRepository = new OrdersDishesRepository(db);

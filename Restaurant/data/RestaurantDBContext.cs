@@ -28,6 +28,7 @@ public class RestaurantDbContext : DbContext
     public DbSet <DishesProducts> DishesProducts { get; set; }
     public DbSet <OrdersDishes> OrdersDishes { get; set; }
     public DbSet<SuppliesProducts> SuppliesProducts { get; set; }
+    public DbSet <RequestsProducts> RequestsProducts { get; set; }
 
 
 
@@ -48,6 +49,7 @@ public class RestaurantDbContext : DbContext
         modelBuilder.Entity<DishesProducts>().HasKey(dp => new { dp.DishID, dp.ProductID });
         modelBuilder.Entity<SuppliesProducts>().HasKey(dp => new { dp.SupplyID, dp.ProductID });
         modelBuilder.Entity<OrdersDishes>().HasKey(dp => new { dp.OrderID, dp.DishID});
+        modelBuilder.Entity<RequestsProducts>().HasKey(dp => new { dp.RequestID, dp.ProductID });
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
