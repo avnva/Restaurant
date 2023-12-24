@@ -30,7 +30,12 @@ namespace Restaurant.app.view
             {
                 // Скрываем кнопку удаления, если объект Order равен null
                 Delete.Visibility = Visibility.Collapsed;
+                Print.Visibility = Visibility.Collapsed;
             }
         }
+        //private void PrintCommandButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ExportDocumentWindow exportDocument = new ExportDocumentWindow();
+        //}
     }
 }

@@ -1,4 +1,6 @@
-﻿using Restaurant.app.view;
+﻿using Restaurant.app.model;
+using Restaurant.app.view;
+using Restaurant.data;
 using Restaurant.repository;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Restaurant.app.view_model;
 
@@ -42,7 +45,6 @@ public class SuppliesPageViewModel : ViewModelBase
     public RelayCommand ReloadCommand { get; private set; }
     public RelayCommand OpenSupplierInfoCommand { get; set; }
     public RelayCommand ReduceGridCommand { get; set; }
-    public RelayCommand PrintCommand { get; set; }
 
 
 
@@ -55,17 +57,7 @@ public class SuppliesPageViewModel : ViewModelBase
         OpenSupplyInfoCommand = new RelayCommand(OpenSupplyInfo, CanOpenSupplyInfo);
         OpenSupplierInfoCommand = new RelayCommand(OpenSupplierInfo, CanOpenSupplierInfo);
         ReduceGridCommand = new RelayCommand(ReduceGrid);
-        PrintCommand = new RelayCommand(Print);
         LoadSupplies();
-    }
-    private void Print(object obj)
-    {
-        repository = new SupplyRepository(new RestaurantDbContext());
-        LoadSupplies();
-
-        //ExportDocumentPage documentPage = new ExportDocumentPage();
-
-        //DataStore.Frame.NavigationService.Navigate(documentPage);
     }
 
     private void ReduceGrid(object obj)

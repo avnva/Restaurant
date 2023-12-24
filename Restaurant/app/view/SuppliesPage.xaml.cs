@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Restaurant.app.view_model;
+using Restaurant.data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Restaurant.app.view
         }
         private void PrintCommand_Click(object sender, RoutedEventArgs e)
         {
-            var ExportdocumentWindow = new ExportDocumentWindow(dataGrid);
+            ExportDocument exportDocument = new ExportDocument(dataGrid);
             //ExportdocumentWindow.ShowDialog();
         }
     }

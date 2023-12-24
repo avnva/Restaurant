@@ -29,10 +29,10 @@
                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
                     <Button Name ="Delete" Margin="5" Content="Удалить" Command="{Binding DeleteOrderCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
                     <Button Margin="5" Content="Сохранить" Command="{Binding SaveCommand}"/>
-                    <Button Width="30" Height="30" Margin="2 5" Click="PrintCommandButton_Click"
-                        Padding="0,0,0,0" HorizontalAlignment="Right"><!--Command="{Binding PrintCommand, UpdateSourceTrigger=PropertyChanged}"-->
+                    <!--<Button Width="30" Height="30" Margin="2 5" Click="PrintCommandButton_Click"
+                        Padding="0,0,0,0" HorizontalAlignment="Right">--><!--Command="{Binding PrintCommand, UpdateSourceTrigger=PropertyChanged}"--><!--
                         <materialDesign:PackIcon Kind="Printer" Width="22" Height="22" />
-                    </Button>
+                    </Button>-->
                 </StackPanel>
             </StackPanel>
 

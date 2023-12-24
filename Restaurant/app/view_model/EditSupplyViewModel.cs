@@ -1,4 +1,5 @@
 ﻿using Restaurant.app.model;
+using Restaurant.data;
 using Restaurant.data.repository;
 using Restaurant.repository;
 using System;
@@ -32,6 +33,7 @@ public class EditSupplyViewModel : ViewModelBase
     public RelayCommand SaveCommand { get; set; }
     public RelayCommand DeleteDishCommand { get; set; }
     public RelayCommand DeleteSupplyCommand { get; set; }
+    public RelayCommand PrintSupplyCommand { get; set; }
 
     public Supplier SelectedSupplier
     {
@@ -228,6 +230,11 @@ public class EditSupplyViewModel : ViewModelBase
         MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Поставка удалена", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
         args.Show();
     }
+
+    private void PrintSupply(object obj)
+    {
+        ExportDocument export = new ExportDocument(Supply, SuppliesProducts);
+    }
     ObservableCollection<SuppliesProducts> allSuppliesProducts;
     public EditSupplyViewModel(Supply supply)
     {
@@ -264,6 +271,7 @@ public class EditSupplyViewModel : ViewModelBase
         
         DeleteDishCommand = new RelayCommand(DeleteDish);
         DeleteSupplyCommand = new RelayCommand(DeleteSupply);
+        PrintSupplyCommand = new RelayCommand(PrintSupply);
     }
 
 }
