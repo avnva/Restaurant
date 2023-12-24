@@ -33,7 +33,7 @@
 
                 
                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-                    <Button Margin="5" Content="Удалить" Command="{Binding DeleteSupplyCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                    <Button Name="Delete" Margin="5" Content="Удалить" Command="{Binding DeleteSupplyCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
                     <Button Margin="5" Content="Сохранить" Command="{Binding SaveCommand}"/>
                     <Button Width="30" Height="30" Margin="2 5" Command="{Binding PrintCommand, UpdateSourceTrigger=PropertyChanged}" 
                         Padding="0,0,0,0" HorizontalAlignment="Right">
@@ -56,11 +56,11 @@
                         <materialDesign:PackIcon Kind="Delete" Width="24" Height="24" 
                                                 HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Button>
-                    <ComboBox Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Поиск" IsEditable="True" 
+                    <ComboBox Margin="10 0 10 5" Foreground="Black" FontSize="15" materialDesign:HintAssist.Hint="Поиск" IsEditable="True" 
                               ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" 
                               SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" 
                               DisplayMemberPath="ProductName" Width="198"/>
-                    <xctk:IntegerUpDown VerticalAlignment="Top" x:Name="productQuantity" Height="26"
+                    <xctk:IntegerUpDown Minimum="1"  VerticalAlignment="Top" x:Name="productQuantity" Height="26"
                                          Value="{Binding SelectedQuantity, Mode=TwoWay}"/>
                 </StackPanel>
                 

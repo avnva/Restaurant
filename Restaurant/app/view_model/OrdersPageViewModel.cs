@@ -1,4 +1,5 @@
-﻿using Restaurant.repository;
+﻿using Restaurant.app.view;
+using Restaurant.repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -65,7 +66,7 @@ public class OrdersPageViewModel : ViewModelBase
 
     private void OpenOrderInfo(object obj)
     {
-        OnNewOrderAdded(SelectedOrder);
+        OpenOrderInfoPage(SelectedOrder);
     }
 
     private void LoadOrders(object obj = null)
@@ -76,10 +77,14 @@ public class OrdersPageViewModel : ViewModelBase
 
     private void AddNewOrder(object obj)
     {
-        OnNewOrderAdded(new Order());
+        OpenOrderInfoPage(null);
     }
-    private void OnNewOrderAdded(Order order)
+
+    private void OpenOrderInfoPage(Order order)
     {
-        NewOrderAdded?.Invoke(order);
+        EditOrderInfoPage editOrderInfoPage = new EditOrderInfoPage(order);
+
+        DataStore.Frame.NavigationService.Navigate(editOrderInfoPage);
     }
+
 }

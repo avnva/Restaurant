@@ -258,6 +258,7 @@ namespace Restaurant
             Dish = dish;
             Menu = new Menu();
             ObservableCollection<DishesProducts> allDishesProducts;
+            SelectedQuantity = 1;
 
             statusRepository = new StatusRepository(db);
             dishGroupRepository = new DishGroupRepository(db);

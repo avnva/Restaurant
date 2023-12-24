@@ -14,7 +14,7 @@ public class OrderRepository
     }
 
     // CREATE
-    public void CreateOrder(Order order)
+    public void AddOrder(Order order)
     {
         _context.Orders.Add(order);
         _context.SaveChanges();
@@ -26,7 +26,12 @@ public class OrderRepository
         return _context.Orders.ToList();
         //return _context.Orders.Include(o => o.OrderedDishes).ToList();
     }
-
+    public int GetMaxOrderId()
+    {
+        // Получаем максимальный ID из базы данных
+        var maxId = _context.Orders.Max(d => (int?)d.OrderID) ?? 0;
+        return maxId;
+    }
     public Order GetOrderById(int orderId)
     {
         return _context.Orders.Include(o => o.OrderedDishes).FirstOrDefault(o => o.OrderID == orderId);
@@ -35,15 +40,12 @@ public class OrderRepository
     // UPDATE
     public void UpdateOrder(Order updatedOrder)
     {
-        var existingOrder = _context.Orders.Include(o => o.OrderedDishes).FirstOrDefault(o => o.OrderID == updatedOrder.OrderID);
-
+        //var existingOrder = _context.Orders.Include(o => o.OrderedDishes).FirstOrDefault(o => o.OrderID == updatedOrder.OrderID);
+        var existingOrder = _context.Orders.Find(updatedOrder.OrderID);
         if (existingOrder != null)
         {
             existingOrder.OrderDate = updatedOrder.OrderDate;
             existingOrder.OrderCost = updatedOrder.OrderCost;
-
-            // Можно также обновить список блюд в заказе
-            existingOrder.OrderedDishes = updatedOrder.OrderedDishes;
 
             _context.SaveChanges();
         }

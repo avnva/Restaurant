@@ -197,20 +197,27 @@ public class EditSupplyViewModel : ViewModelBase
     }
     void SelectDishesProducts(ObservableCollection<SuppliesProducts> all)
     {
-        if (SuppliesProducts != null)
+        if (all.Count != 0 && Supply != null)
         {
-            SuppliesProducts.Clear();
+            if (SuppliesProducts != null)
+            {
+                SuppliesProducts.Clear();
+            }
+            else
+            {
+                SuppliesProducts = new ObservableCollection<SuppliesProducts>();
+            }
+            foreach (var supply in all)
+            {
+                if (supply.SupplyID == Supply.SupplyID)
+                {
+                    SuppliesProducts.Add(supply);
+                }
+            }
         }
         else
         {
             SuppliesProducts = new ObservableCollection<SuppliesProducts>();
-        }
-        foreach (var supply in all)
-        {
-            if (supply.SupplyID == Supply.SupplyID)
-            {
-                SuppliesProducts.Add(supply);
-            }
         }
     }
     private void DeleteSupply(object obj)
@@ -226,7 +233,8 @@ public class EditSupplyViewModel : ViewModelBase
     {
         db = new RestaurantDbContext();
         Supply = supply;
-        
+        SelectedQuantity = 1;
+
 
         supplierRepository = new SupplierRepository(db);
         supplyRepository = new SupplyRepository(db);
@@ -235,12 +243,12 @@ public class EditSupplyViewModel : ViewModelBase
 
         Suppliers = new ObservableCollection<Supplier>(supplierRepository.GetSuppliers());
         Products = new ObservableCollection<Product>(productRepository.GetProductsWithUnitOfMeasure());
+        allSuppliesProducts = new ObservableCollection<SuppliesProducts>(suppliesProductsRepository.Get());
+        SelectDishesProducts(allSuppliesProducts);
 
         if (Supply != null)
         {
             SelectedSupplier = Suppliers.FirstOrDefault(i => i.SupplierID == Supply.Supplier.SupplierID);
-            allSuppliesProducts = new ObservableCollection<SuppliesProducts>(suppliesProductsRepository.Get());
-            SelectDishesProducts(allSuppliesProducts);
         }
         else
         {

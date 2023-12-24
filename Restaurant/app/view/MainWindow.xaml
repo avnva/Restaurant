@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.app.view" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Resources\icon-restaurant.png"
+        Title="Ресторан Mamma Mia" Height="450" Width="800">
     <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -28,20 +30,10 @@
             <MenuItem Foreground="White" Header="Поставки" Click="Supplies_Click" Style="{StaticResource MenuItemStyle}">
             </MenuItem>
 
-            <MenuItem Header="Заявки" Foreground="White">
-                <MenuItem Header="Создать заявку" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
-
-                <MenuItem Header="Список заявок"  Click="Requests_Click" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
+            <MenuItem Header="Заявки" Foreground="White" Click="Requests_Click">
             </MenuItem>
 
-            <MenuItem Header="Реализация" Foreground="White" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="Создать заказ" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
-
-                <MenuItem Header="Список заказов"  Click="Orders_Click" Style="{StaticResource MenuItemStyle}">
-                </MenuItem>
+            <MenuItem Header="Реализация" Foreground="White"  Click="Orders_Click" Style="{StaticResource MenuItemStyle}">
             </MenuItem>
 
             <MenuItem Foreground="White" Header="Помощь" Style="{StaticResource MenuItemStyle}">

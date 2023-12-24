@@ -1,4 +1,5 @@
 ﻿using Restaurant.app.model;
+using Restaurant.app.view;
 using Restaurant.repository;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Restaurant.app.view_model;
 
@@ -65,7 +67,7 @@ public class RequestsPageViewModel : ViewModelBase
 
     private void OpenRequestInfo(object obj)
     {
-        OnNewRequestAdded(SelectedRequest);
+        OpenRequestInfoPage(SelectedRequest);
     }
 
     private void LoadRequests(object obj = null)
@@ -76,15 +78,13 @@ public class RequestsPageViewModel : ViewModelBase
 
     private void AddNewRequest(object obj)
     {
-        Request newRequest = new Request();
 
-        Department newDepartment = new Department(); 
-        newRequest.Department = newDepartment; 
-
-        OnNewRequestAdded(new Request());
+        OpenRequestInfoPage(null);
     }
-    private void OnNewRequestAdded(Request request)
+    private void OpenRequestInfoPage(Request request)
     {
-        NewRequestAdded?.Invoke(request);
+        EditRequestInfoPage editRequestInfoPage = new EditRequestInfoPage(request);
+
+        DataStore.Frame.NavigationService.Navigate(editRequestInfoPage);
     }
 }

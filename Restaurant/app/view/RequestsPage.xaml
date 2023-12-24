@@ -15,11 +15,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding AddNewDishCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding AddNewRequestCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
             </Button>
 
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding OpenDishInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding OpenRequestInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Edit" Width="24" Height="24" />
             </Button>
 
