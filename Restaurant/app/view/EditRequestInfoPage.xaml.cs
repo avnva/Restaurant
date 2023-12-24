@@ -27,7 +27,7 @@ namespace Restaurant.app.view
             DataContext = new EditRequestViewModel(request);
             if (request == null)
             {
-                // Скрываем кнопку удаления, если объект Order равен null
+                // Скрываем кнопку удаления, если объект равен null
                 Delete.Visibility = Visibility.Collapsed;
             }
         }

@@ -40,7 +40,7 @@ public class RequestsProductsRepository
     // UPDATE
     public void Update(RequestsProducts updatedRequestsProducts)
     {
-        var existingRequestsProducts = _context.DishesProducts.Find(updatedRequestsProducts.RequestID, updatedRequestsProducts.ProductID);
+        var existingRequestsProducts = _context.RequestsProducts.Find(updatedRequestsProducts.RequestID, updatedRequestsProducts.ProductID);
 
         if (existingRequestsProducts != null)
         {

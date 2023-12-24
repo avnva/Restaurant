@@ -41,7 +41,7 @@ public class RequestRepository
     // UPDATE
     public void UpdateRequest(Request updatedRequest)
     {
-        var existingRequest = _context.Requests.Find(updatedRequest);
+        var existingRequest = _context.Requests.Find(updatedRequest.RequestID);
 
         if (existingRequest != null)
         {

@@ -37,7 +37,7 @@ public class WarehouseRepository
     // UPDATE
     public void UpdateWarehouse(Warehouse updatedWarehouse)
     {
-        var existingWarehouse = _context.Warehouses.Find(updatedWarehouse);
+        var existingWarehouse = _context.Warehouses.Find(updatedWarehouse.WarehouseID);
 
         if (existingWarehouse != null)
         {
