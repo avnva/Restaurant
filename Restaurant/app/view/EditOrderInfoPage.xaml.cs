@@ -31,5 +31,10 @@ namespace Restaurant.app.view
                 Delete.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void PrintCommandButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExportDocumentWindow exportDocument = new ExportDocumentWindow();
+        }
     }
 }

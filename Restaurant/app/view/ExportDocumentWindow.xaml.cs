@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using Range = Microsoft.Office.Interop.Excel.Range;
+using Word = Microsoft.Office.Interop.Word;
+
 
 namespace Restaurant.app.view
 {
@@ -32,6 +34,17 @@ namespace Restaurant.app.view
             //DataContext = new ExportDocumentViewModel();
 
             ExportSuppliesToExcelButton_Click(new object(), new RoutedEventArgs());
+            Close();
+        }
+        public ExportDocumentWindow()
+        {
+            InitializeComponent();
+            //DataContext = new ExportDocumentViewModel();
+            int id_order = 12345;
+            string date = "01.01.2023";
+
+
+            ExportOrderToWord(id_order, date);
             Close();
         }
 
@@ -75,6 +88,136 @@ namespace Restaurant.app.view
                 }
             }
         }
+        
+        private void ExportOrderToWord(int order_id, string date)
+        {
+            string testText = "Экспорт в Word завершен с успехом!";
+
+
+            //Word.Application wordApp = new Word.Application();
+
+            //wordApp.Visible = false;
+
+            //// Создание нового документа Word
+            //Word.Document doc = wordApp.Documents.Add();
+
+            //Word.Table table = doc.Tables.Add(doc.Range(), 3, 3);
+            //table.Borders.Enable = 1; // Включение границ таблицы
+
+            //// Заполнение заголовков столбцов таблицы
+            //table.Cell(1, 1).Range.Text = "Имя";
+            //table.Cell(1, 2).Range.Text = "Фамилия";
+            //table.Cell(1, 3).Range.Text = "Группа";
+
+            //wordApp.Visible = true;
+
+
+
+            Word.Application wordapp = new Word.Application();
+            wordapp.Visible = false;
+            Word.Document worddoc;
+            object wordobj = System.Reflection.Missing.Value;
+            worddoc = wordapp.Documents.Add(ref wordobj);
+            wordapp.Selection.TypeText("Номер заказа: " + order_id.ToString() + "\n" + "Дата: " + date);
+
+
+
+
+            //Word.Table table = worddoc.Tables.Add(worddoc.Range(), 3, 3); //Range, кол-ко столбцов, кол-во строк
+            //table.Borders.Enable = 1; // Включение границ таблицы
+
+            //// Заполнение заголовков столбцов таблицы
+            //table.Cell(1, 1).Range.Text = "Название";
+            //table.Cell(1, 2).Range.Text = "Цена";
+            //table.Cell(1, 3).Range.Text = "Количество";
+
+            //for (int i = 0; i < length; i++)
+            //{
+            //    table.Cell(i, 1).Range.Text = "Название ...";
+            //    table.Cell(i, 2).Range.Text = "Цена ...";
+            //    table.Cell(i, 3).Range.Text = "Количество ...";
+            //}
+
+
+            wordapp.Visible = true;
+
+            wordapp = null;
+        }
+
+
+        //private void ExportPassengerToWordButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (ValidateNameFile())
+        //    {
+        //        MessageBox.Show("Введите название файла", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+        //        return;
+        //    }
+
+        //    var myExportList = GetDataToExport();
+
+        //    if (!myExportList.Any())
+        //    {
+        //        MessageBox.Show("Нет данных для экспорта", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+        //        return;
+        //    }
+
+        //    string rootPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        //    string absolutePath = Path.Combine(rootPath, "Documents", NameFileTextBox.Text);
+        //    string docxFilePath = $"{absolutePath}.docx";
+        //    ExportToWord(myExportList, docxFilePath);
+        //    OpenDir(absolutePath);
+        //}
+
+        //private void OpenDir(string absolutePath)
+        //{
+        //    string directoryPath = Path.GetDirectoryName(absolutePath);
+
+        //    try
+        //    {
+        //        Process.Start("explorer.exe", directoryPath);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Ошибка при открытии проводника: " + ex.Message);
+        //    }
+
+        //    MessageBox.Show("Успешно", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+        //    NameFileTextBox.Clear();
+        //}
+
+        //private void ExportToWord(List<ExportPassenger> myExportList, string docxFilePath)
+        //{
+        //    using (DocX doc = DocX.Create(docxFilePath))
+        //    {
+        //        int rowCount = myExportList.Count + 1;
+        //        int columnCount = 8;
+
+        //        Table table = doc.AddTable(rowCount, columnCount);
+        //        table.Design = TableDesign.None;
+
+        //        for (int col = 0; col < columnCount; col++)
+        //        {
+        //            table.Rows[0].Cells[col].Paragraphs.First().Append(GetColumnName(col));
+        //        }
+
+        //        for (int row = 1; row < rowCount; row++)
+        //        {
+        //            ExportPassenger passenger = myExportList[row - 1];
+
+        //            table.Rows[row].Cells[0].Paragraphs.First().Append(passenger.Id);
+        //            table.Rows[row].Cells[1].Paragraphs.First().Append(passenger.FirstName);
+        //            table.Rows[row].Cells[2].Paragraphs.First().Append(passenger.LastName);
+        //            table.Rows[row].Cells[3].Paragraphs.First().Append(passenger.Patronymic);
+        //            table.Rows[row].Cells[4].Paragraphs.First().Append(passenger.PassportSeries);
+        //            table.Rows[row].Cells[5].Paragraphs.First().Append(passenger.PassportId);
+        //            table.Rows[row].Cells[6].Paragraphs.First().Append(passenger.DateOfIssue);
+        //            table.Rows[row].Cells[7].Paragraphs.First().Append(passenger.IssuedBy);
+        //        }
+
+        //        doc.InsertTable(table);
+        //        doc.Save();
+        //    }
+        //}
 
         dynamic Excel.Window.Activate()
         {
