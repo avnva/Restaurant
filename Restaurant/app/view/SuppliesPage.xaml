@@ -34,7 +34,7 @@
                     Padding="0,0,0,0">
                 
             </Button>
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding PrintCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+            <Button Width="32" Height="32" Margin="2 5"  Click="PrintCommand_Click"  Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Printer" Width="24" Height="24" />
             </Button>
             <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground ="White" Text="Поставки" Width="117"/>

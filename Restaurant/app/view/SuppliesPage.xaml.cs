@@ -1,4 +1,5 @@
-﻿using Restaurant.app.view_model;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurant.app.view_model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace Restaurant.app.view
             InitializeComponent();
 
             DataContext = new SuppliesPageViewModel();
+        }
+        private void PrintCommand_Click(object sender, RoutedEventArgs e)
+        {
+            var ExportdocumentWindow = new ExportDocumentWindow(dataGrid);
+            //ExportdocumentWindow.ShowDialog();
         }
     }
 }
