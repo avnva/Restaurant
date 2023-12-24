@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Background="Black" >
-            
+
 
             <MenuItem Header="Меню" Foreground="White" Click="Dishes_Click" Style="{StaticResource MenuItemStyle}">
                 <MenuItem.Icon>
@@ -24,7 +24,7 @@
             </MenuItem>
 
             <MenuItem Header="Склады" Foreground="White" Click="Warehouses_Click" Style="{StaticResource MenuItemStyle}">
-  
+
             </MenuItem>
 
             <MenuItem Foreground="White" Header="Поставки" Click="Supplies_Click" Style="{StaticResource MenuItemStyle}">
@@ -37,25 +37,19 @@
             </MenuItem>
 
             <MenuItem Foreground="White" Header="Помощь" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="Содержание" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="Содержание" Click="ContentButton_Click" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="HelpCircleOutline"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator Height="2"/>
-                <MenuItem Header="О программе" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="О программе" Click="AboutProgram_Click" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="InformationCircleOutline"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Выход" Style="{StaticResource MenuItemStyle}">
-                <MenuItem.Icon>
-                    <materialDesign:PackIcon Kind="ExitToApp"/>
-                </MenuItem.Icon>
-            </MenuItem>
         </Menu>
-
         <Frame Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Visible"/>
     </Grid>
 </Window>

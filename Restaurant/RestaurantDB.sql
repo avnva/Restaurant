@@ -175,6 +175,4 @@ ALTER TABLE "RequestsProducts" ADD FOREIGN KEY ("RequestID") REFERENCES "Request
 
 ALTER TABLE "RequestsProducts" ADD FOREIGN KEY ("ProductID") REFERENCES "Products" ("ProductID");
 
-ALTER TABLE "OrdersDishes" ADD FOREIGN KEY ("DishID") REFERENCES "Dishes" ("DishID");
 
-ALTER TABLE "OrdersDishes" ADD FOREIGN KEY ("OrderID") REFERENCES "Orders" ("OrderID");

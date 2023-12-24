@@ -1,6 +1,7 @@
 ﻿using Restaurant;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,29 @@ namespace Restaurant.app.view
         {
             RequestsPage requestsPage = new RequestsPage();
             mainFrame.NavigationService.Navigate(requestsPage);
+        }
+        public void ContentButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process process = new();
+                process.StartInfo = new ProcessStartInfo("Help.pdf")
+                {
+                    UseShellExecute = true
+                };
+                process.Start();
+            }
+            catch (Exception)
+            {
+                MessageBoxEventArgs args = new MessageBoxEventArgs(null, "Ошибка при открытии руководства пользователя", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                args.Show();
+            }
+
+        }
+        private void AboutProgram_Click(object sender, RoutedEventArgs e)
+        {
+            AboutProgram aboutProgramPage = new AboutProgram();
+            mainFrame.NavigationService.Navigate(aboutProgramPage);
         }
     }
 }

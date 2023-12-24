@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;
 using Range = Microsoft.Office.Interop.Excel.Range;
 using Word = Microsoft.Office.Interop.Word;
 using Restaurant.app.model;

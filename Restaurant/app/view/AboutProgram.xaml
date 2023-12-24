@@ -1,0 +1,19 @@
+﻿<Page x:Class="Restaurant.app.view.AboutProgram"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant.app.view"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AboutProgram">
+
+    <Grid Background="Black">
+        <TextBlock FontSize="18" Foreground="White" HorizontalAlignment="Center" 
+                   Text="Данная программа является фрагментом информационной системы ресторана." Margin="0,102,0,0"/>
+        <TextBlock FontSize="18" Foreground="White" HorizontalAlignment="Center" 
+                   Text="Лицензия: бесплатная программа для некоммерческого использования " Margin="0,142,0,0"/>
+        <TextBlock FontSize="18" Foreground="White" HorizontalAlignment="Center" 
+                   Text="Автор: Войнова Алиса Максимовна, e-mail: voynova.03@inbox.ru 2023 г." Margin="0,182,0,0"/>
+    </Grid>
+</Page>
